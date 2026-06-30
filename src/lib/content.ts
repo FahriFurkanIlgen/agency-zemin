@@ -22,6 +22,13 @@ export type OpenCallItem = {
   gradient: string;
 };
 
+export type ValueItem = {
+  id: string;
+  num: string;
+  title: Localized;
+  body: Localized;
+};
+
 export type SiteContent = {
   headerStatement: Localized;
   hero: {
@@ -50,6 +57,11 @@ export type SiteContent = {
   openCalls: {
     heading: Localized;
     items: OpenCallItem[];
+  };
+  values: {
+    label: Localized;
+    statement: Localized;
+    items: ValueItem[];
   };
   contact: {
     heading: Localized;
@@ -102,8 +114,8 @@ export const DEFAULT_CONTENT: SiteContent = {
     metaLeft: { de: "KREUZBERG\nBERLIN", en: "KREUZBERG\nBERLIN" },
     metaRight: { de: "EST\n(2025)", en: "EST\n(2025)" },
     headingLines: {
-      de: "EIN\nUNABHÄNGIGER\nPRODUKTIONS-\nORT FÜR\nINTERDISZIPLINÄRE\nKUNST",
-      en: "AN\nINDEPENDENT\nPRODUCTION\nSITE FOR\nINTERDISCIPLINARY\nART",
+      de: "EIN\nUNABHÄNGIGER\nPRODUKTIONS-\nORT FÜR\nHYBRIDE\nKUNST",
+      en: "AN\nINDEPENDENT\nPRODUCTION\nSITE FOR\nHYBRID\nART",
     },
     body: {
       de: "Zemin ist ein Kunstraum im Herzen von Kreuzberg, Berlin. Wir beherbergen und unterstützen interdisziplinäre künstlerische Praktiken — Performances, Ausstellungen, Workshops und Begegnungen. Ein Boden zum Experimentieren, wo Ideen auf Raum treffen und sich Gemeinschaften rund um die Arbeit versammeln.",
@@ -227,6 +239,54 @@ export const DEFAULT_CONTENT: SiteContent = {
         status: { de: "OFFEN", en: "OPEN" },
         applyHref: "/booking",
         gradient: "linear-gradient(135deg, #6a4ea0, #2b1d4f)",
+      },
+    ],
+  },
+  values: {
+    label: {
+      de: "DIE FLAGGEN, FÜR DIE WIR STEHEN",
+      en: "THE FLAGS WE STAND FOR",
+    },
+    statement: {
+      de: "Wir sind ein lebendiger Ort — offen, eigensinnig und auf Vertrauen gebaut.",
+      en: "We are a living space — open, intentional, and built on trust.",
+    },
+    items: [
+      {
+        id: "v1",
+        num: "(01)",
+        title: { de: "UNABHÄNGIGKEIT", en: "INDEPENDENCE" },
+        body: {
+          de: "Wir arbeiten selbstorganisiert und frei von kommerziellem Druck. Der Raum gehört der Arbeit, die in ihm entsteht — nicht dem Markt.",
+          en: "We work self-organized and free from commercial pressure. The space belongs to the work made within it — not to the market.",
+        },
+      },
+      {
+        id: "v2",
+        num: "(02)",
+        title: { de: "EXPERIMENT", en: "EXPERIMENTATION" },
+        body: {
+          de: "Prozess vor Produkt. Wir machen Platz für das Unfertige, das Risiko und die Frage — dort, wo etwas Neues entstehen kann.",
+          en: "Process before product. We make room for the unfinished, the risk and the question — where something new can take shape.",
+        },
+      },
+      {
+        id: "v3",
+        num: "(03)",
+        title: { de: "GEMEINSCHAFT", en: "COMMUNITY" },
+        body: {
+          de: "Kunst entsteht im Miteinander. Wir versammeln Menschen rund um die Arbeit und teilen den Boden, auf dem wir alle stehen.",
+          en: "Art happens together. We gather people around the work and share the ground we all stand on.",
+        },
+      },
+      {
+        id: "v4",
+        num: "(04)",
+        title: { de: "OFFENHEIT", en: "OPENNESS" },
+        body: {
+          de: "Offene Türen, zugänglich für alle. Wir glauben an einen Ort, der einlädt statt ausschließt — über Disziplinen und Herkünfte hinweg.",
+          en: "Open doors, accessible to all. We believe in a space that invites rather than excludes — across disciplines and origins.",
+        },
       },
     ],
   },

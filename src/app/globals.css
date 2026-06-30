@@ -249,6 +249,12 @@
   html.intro-active body {
     overflow: hidden;
   }
+
+  /* Mobile menu overlay scroll lock */
+  html.menu-open,
+  html.menu-open body {
+    overflow: hidden;
+  }
   .intro {
     position: fixed;
     inset: 0;

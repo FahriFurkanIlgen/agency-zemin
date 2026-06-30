@@ -95,7 +95,7 @@ export function Hero() {
               text={line}
               as="span"
               delay={i * 90}
-              className="block text-[12vw] leading-[0.82] md:text-[9vw]"
+              className="block text-[12vw] leading-[0.82] [overflow-wrap:anywhere] md:text-[9vw]"
             />
           ))}
         </h1>

@@ -7,6 +7,7 @@ import type {
   Localized,
   EventItem,
   OpenCallItem,
+  ValueItem,
 } from "@/lib/content";
 
 type Status = { kind: "idle" | "saving" | "ok" | "error"; msg?: string };
@@ -374,6 +375,70 @@ export default function AdminPage() {
           </div>
         </Section>
 
+        {/* Values */}
+        <Section title="DIE FLAGGEN (WERTE)">
+          <LocalizedField
+            label="Label (klein, über der Aussage)"
+            value={content.values.label}
+            onChange={(v) =>
+              setContent({
+                ...content,
+                values: { ...content.values, label: v },
+              })
+            }
+          />
+          <LocalizedField
+            label="Aussage (große Überschrift)"
+            value={content.values.statement}
+            multiline
+            onChange={(v) =>
+              setContent({
+                ...content,
+                values: { ...content.values, statement: v },
+              })
+            }
+          />
+          <div className="flex flex-col gap-4">
+            {content.values.items.map((item, i) => (
+              <ValueEditor
+                key={item.id}
+                item={item}
+                onChange={(next) => {
+                  const items = [...content.values.items];
+                  items[i] = next;
+                  setContent({
+                    ...content,
+                    values: { ...content.values, items },
+                  });
+                }}
+                onRemove={() => {
+                  const items = content.values.items.filter(
+                    (_, idx) => idx !== i,
+                  );
+                  setContent({
+                    ...content,
+                    values: { ...content.values, items },
+                  });
+                }}
+              />
+            ))}
+            <button
+              onClick={() =>
+                setContent({
+                  ...content,
+                  values: {
+                    ...content.values,
+                    items: [...content.values.items, blankValue()],
+                  },
+                })
+              }
+              className="label-mono w-fit border border-foreground/30 px-4 py-2 text-[11px] hover:bg-foreground/5"
+            >
+              + FLAGGE HINZUFÜGEN
+            </button>
+          </div>
+        </Section>
+
         {/* Contact */}
         <Section title="KONTAKT">
           <LocalizedField
@@ -506,6 +571,15 @@ function blankCall(): OpenCallItem {
     status: { de: "", en: "" },
     applyHref: "/booking",
     gradient: "linear-gradient(135deg, #2a6f5a, #0e3b32)",
+  };
+}
+
+function blankValue(): ValueItem {
+  return {
+    id: `v${Date.now()}`,
+    num: "",
+    title: { de: "", en: "" },
+    body: { de: "", en: "" },
   };
 }
 
@@ -702,6 +776,46 @@ function CallEditor({
         label="Hintergrund (CSS gradient)"
         value={call.gradient}
         onChange={(gradient) => onChange({ ...call, gradient })}
+      />
+    </div>
+  );
+}
+
+function ValueEditor({
+  item,
+  onChange,
+  onRemove,
+}: {
+  item: ValueItem;
+  onChange: (v: ValueItem) => void;
+  onRemove: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-3 border border-foreground/30 p-4">
+      <div className="flex items-center justify-between">
+        <span className="label-mono text-[11px] opacity-60">FLAGGE</span>
+        <button
+          onClick={onRemove}
+          className="label-mono text-[11px] underline-offset-2 hover:underline"
+        >
+          ENTFERNEN ✕
+        </button>
+      </div>
+      <Field
+        label="Nummer (z. B. (01))"
+        value={item.num}
+        onChange={(num) => onChange({ ...item, num })}
+      />
+      <LocalizedField
+        label="Titel"
+        value={item.title}
+        onChange={(title) => onChange({ ...item, title })}
+      />
+      <LocalizedField
+        label="Text"
+        value={item.body}
+        multiline
+        onChange={(body) => onChange({ ...item, body })}
       />
     </div>
   );
