@@ -113,8 +113,8 @@ export const DEFAULT_CONTENT: SiteContent = {
     metaLeft: { de: "", en: "" },
     metaRight: { de: "", en: "" },
     headingLines: {
-      de: "Zemin Berlin Art Space:\nAn independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
-      en: "Zemin Berlin Art Space:\nAn independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
+      de: "An independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
+      en: "An independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
     },
     body: {
       de: "",

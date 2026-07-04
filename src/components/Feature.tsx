@@ -13,7 +13,12 @@ function formatTime(seconds: number) {
   return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
 }
 
-export function Feature() {
+type FeatureProps = {
+  id?: string;
+  src?: string;
+};
+
+export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: FeatureProps) {
   const { lang } = useLanguage();
   const { feature } = useContent();
 
@@ -139,7 +144,7 @@ export function Feature() {
   return (
     <section
       ref={sectionRef}
-      id="feature"
+      id={id}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       onMouseDown={handleDown}
@@ -150,7 +155,7 @@ export function Feature() {
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/feedback.mp4"
+        src={src}
         autoPlay
         loop
         muted

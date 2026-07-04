@@ -19,6 +19,7 @@ export default function Home() {
         <About />
         <Feature />
         <Program />
+        <Feature id="old-scenes" src="/videos/old-scenes.mp4" />
         <OpenCalls />
         {/* <Values /> — hidden for now */}
         <Contact />

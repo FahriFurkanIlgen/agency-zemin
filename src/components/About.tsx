@@ -26,7 +26,7 @@ export function About() {
 
       <div className="grid gap-12 md:grid-cols-2 md:gap-16">
         {/* Big headline */}
-        <h2 className="display-pressura text-[12vw] leading-[0.9] [overflow-wrap:anywhere] md:text-[clamp(2.5rem,5vw,5.5rem)]">
+        <h2 className={`display-pressura text-[clamp(2.6rem,10vw,6rem)] leading-[0.9] break-words hyphens-auto md:text-[clamp(2.5rem,5vw,5.5rem)] ${body ? "" : "md:col-span-2 md:text-[clamp(3rem,6.5vw,7rem)]"}`}>
           {lines(about.headingLines, lang).map((line, i) => (
             <ScrambleText
               key={`${lang}-${i}`}
