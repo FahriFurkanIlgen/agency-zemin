@@ -178,16 +178,8 @@ export function Nav() {
       {/* Full-screen overlay menu (all sizes) */}
       {menuOpen && (
         <div className="fixed inset-0 z-[60] flex min-h-0 flex-col overflow-hidden bg-foreground px-5 py-4 text-background md:px-6 md:py-5">
-          {/* Top row: logo + close */}
-          <div className="menu-chrome flex items-center justify-between">
-            <Link
-              href="/"
-              onClick={closeMenu}
-              aria-label="ZEMIN BERLIN"
-              className="display-pressura text-[26px] font-semibold tracking-tight"
-            >
-              ZEMIN BERLIN
-            </Link>
+          {/* Top row: close */}
+          <div className="menu-chrome flex items-center justify-end">
             <button
               type="button"
               onClick={closeMenu}
