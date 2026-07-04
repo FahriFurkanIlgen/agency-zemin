@@ -1,5 +1,6 @@
 "use client";
 
+import { MapPin } from "lucide-react";
 import { ScrambleText } from "./ScrambleText";
 import { useLanguage } from "./LanguageProvider";
 import { useContent } from "./ContentProvider";
@@ -21,13 +22,18 @@ export function Contact() {
 
       <div className="grid gap-10 md:grid-cols-2 md:gap-16">
         {/* Map */}
-        <div className="aspect-[4/3] w-full overflow-hidden rounded-sm border border-foreground/30 md:aspect-auto md:min-h-[420px]">
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-sm border border-foreground/30 md:aspect-auto md:min-h-[420px]">
           <iframe
             title="Zemin Berlin location"
-            className="h-full w-full"
+            className="h-full w-full grayscale invert hue-rotate-180 contrast-125"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             src={`https://www.google.com/maps?q=${contact.mapsQuery}&output=embed`}
+          />
+          <MapPin
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 z-10 h-12 w-12 -translate-x-1/2 -translate-y-full fill-[#e1192d] text-[#e1192d] drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] md:h-14 md:w-14"
+            strokeWidth={2.5}
           />
         </div>
 

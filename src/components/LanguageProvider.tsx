@@ -19,13 +19,20 @@ type LanguageContextValue = {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Lang>("de");
+  const [lang, setLang] = useState<Lang>("en");
 
   useEffect(() => {
     const stored = window.localStorage.getItem("zemin-lang");
     // Sync from persisted preference after hydration to avoid SSR mismatch.
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    if (stored === "en" || stored === "de") setLang(stored);
+    if (stored === "en" || stored === "de") {
+      setLang(stored);
+      return;
+    }
+
+    const browserLang = window.navigator.language.toLowerCase();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setLang(browserLang.startsWith("de") ? "de" : "en");
   }, []);
 
   useEffect(() => {

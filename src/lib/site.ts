@@ -40,7 +40,7 @@ export const BOOKING_CATEGORIES: { id: string; en: string; de: string }[] = [
 
 export const DICT = {
   en: {
-    getInTouch: "Get in\ntouch",
+    getInTouch: "Get In\nTouch",
     bravery: "An independent art space",
     scroll: "Scroll to view more ↓",
     based: "Kreuzberg\nBerlin",
@@ -55,7 +55,7 @@ export const DICT = {
     backHome: "← Back home",
   },
   de: {
-    getInTouch: "Kontakt\naufnehmen",
+    getInTouch: "Kontakt\nAufnehmen",
     bravery: "Ein unabhängiger Kunstraum",
     scroll: "Weiter scrollen ↓",
     based: "Kreuzberg\nBerlin",

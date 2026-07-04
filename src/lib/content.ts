@@ -117,8 +117,8 @@ export const DEFAULT_CONTENT: SiteContent = {
     metaLeft: { de: "", en: "" },
     metaRight: { de: "", en: "" },
     headingLines: {
-      de: "An independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
-      en: "An independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
+      de: "An independent Production site in Kreuzberg, dedicated to Hosting and Supporting interdisciplinary Artistic practices.",
+      en: "An independent Production site in Kreuzberg, dedicated to Hosting and Supporting interdisciplinary Artistic practices.",
     },
     body: {
       de: "",
@@ -217,7 +217,7 @@ export const DEFAULT_CONTENT: SiteContent = {
         applyHref:
           "https://docs.google.com/forms/d/e/1FAIpQLSfqi_AGBy1Pjq3axn2oMbO9cY4ZmNcbUIu7RoGMNdV1wDLtWA/viewform?usp=header",
         gradient: "linear-gradient(135deg, #2a6f5a, #0e3b32)",
-        imageUrl: DEFAULT_OPEN_CALL_IMAGE,
+        imageUrl: "/images/organize.png?v=2",
       },
       {
         id: "c2",
@@ -232,7 +232,7 @@ export const DEFAULT_CONTENT: SiteContent = {
         applyHref:
           "https://docs.google.com/forms/d/e/1FAIpQLSfo1EpMzaRZ2YMBGSMrY9n_HTcn21m3khUcuy_3LzKxC-AFfA/viewform?usp=header",
         gradient: "linear-gradient(135deg, #c2603f, #5e2516)",
-        imageUrl: DEFAULT_OPEN_CALL_IMAGE,
+        imageUrl: "/images/av.png?v=1",
       },
       {
         id: "c3",
@@ -247,7 +247,7 @@ export const DEFAULT_CONTENT: SiteContent = {
         applyHref:
           "https://docs.google.com/forms/d/e/1FAIpQLSdI0C4PFWsVN967dZDSveRkAd9FeUDitHoufgrIFgZHl2y32Q/viewform?usp=publish-editor",
         gradient: "linear-gradient(135deg, #6a4ea0, #2b1d4f)",
-        imageUrl: DEFAULT_OPEN_CALL_IMAGE,
+        imageUrl: "/images/analog.png?v=2",
       },
     ],
   },
@@ -300,7 +300,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     ],
   },
   contact: {
-    heading: { de: "Melde dich", en: "Get in touch" },
+    heading: { de: "Melde Dich", en: "Get in Touch" },
     address: "Urbanstr. 3, 10961 Berlin",
     email: "info@zeminberlin.de",
     phone: "+49 15569070168",
@@ -312,7 +312,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   footer: {
     headingLines: {
       de: "Lass uns\netwas\nhier —\nzusammen\nmachen.",
-      en: "Let's make something - together.",
+      en: "Let's Make Something - Together.",
     },
   },
 };

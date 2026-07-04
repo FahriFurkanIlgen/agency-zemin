@@ -43,7 +43,7 @@ export default async function RootLayout({
   const content = await getContent();
   return (
     <html
-      lang="de"
+      lang="en"
       className={`${splineMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">

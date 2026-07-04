@@ -242,7 +242,7 @@ export function Nav() {
           {/* Oversized wordmark */}
           <div
             aria-hidden
-            className="menu-wordmark display-pressura -mb-1 shrink-0 select-none text-[clamp(60px,20vw,120px)] font-semibold leading-[0.78] tracking-tight md:-mb-2 md:text-[clamp(110px,15vw,220px)]"
+            className="menu-wordmark display-pressura -mb-1 shrink-0 select-none text-[clamp(56px,18vw,104px)] font-semibold leading-[0.9] tracking-tight md:-mb-2 md:text-[clamp(110px,15vw,220px)] md:leading-[0.78]"
           >
             ZEMIN BERLIN
           </div>

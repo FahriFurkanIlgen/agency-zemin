@@ -45,6 +45,13 @@ function titleToDescription(title: string) {
   };
 }
 
+function imageForTitle(title: string) {
+  if (/organize your event/i.test(title)) return "/images/organize.png?v=2";
+  if (/a\|v\s*chemy/i.test(title)) return "/images/av.png?v=1";
+  if (/analog\s*flux/i.test(title)) return "/images/analog.png?v=2";
+  return DEFAULT_OPEN_CALL_IMAGE;
+}
+
 function parseOpenCalls(html: string): OpenCallItem[] {
   const seen = new Set<string>();
   const calls: OpenCallItem[] = [];
@@ -66,7 +73,7 @@ function parseOpenCalls(html: string): OpenCallItem[] {
       status: { de: "OFFEN", en: "OPEN" },
       applyHref: href,
       gradient: OPEN_CALL_GRADIENTS[index % OPEN_CALL_GRADIENTS.length],
-      imageUrl: DEFAULT_OPEN_CALL_IMAGE,
+      imageUrl: imageForTitle(title),
     });
   }
 
