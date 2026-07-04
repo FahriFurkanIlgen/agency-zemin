@@ -12,12 +12,18 @@ import type {
 
 type Status = { kind: "idle" | "saving" | "ok" | "error"; msg?: string };
 
+type NewsletterSubscriber = {
+  email: string;
+  createdAt: string;
+};
+
 export default function AdminPage() {
   const [authed, setAuthed] = useState<boolean | null>(null);
   const [password, setPassword] = useState("");
   const [loginError, setLoginError] = useState("");
   const [content, setContent] = useState<SiteContent | null>(null);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
+  const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
 
   // Check existing session + load content
   useEffect(() => {
@@ -26,10 +32,19 @@ export default function AdminPage() {
         fetch("/api/admin/login").then((r) => r.json()),
         fetch("/api/content").then((r) => r.json()),
       ]);
-      setAuthed(Boolean(s.authenticated));
+      const authenticated = Boolean(s.authenticated);
+      setAuthed(authenticated);
       setContent(c);
+      if (authenticated) await loadNewsletterSubscribers();
     })();
   }, []);
+
+  async function loadNewsletterSubscribers() {
+    const res = await fetch("/api/newsletter");
+    if (!res.ok) return;
+    const data = (await res.json()) as { subscribers?: NewsletterSubscriber[] };
+    setSubscribers(data.subscribers || []);
+  }
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -42,6 +57,7 @@ export default function AdminPage() {
     if (res.ok) {
       setAuthed(true);
       setPassword("");
+      await loadNewsletterSubscribers();
     } else {
       const data = await res.json().catch(() => ({}));
       setLoginError(data.error || "Login fehlgeschlagen");
@@ -526,6 +542,48 @@ export default function AdminPage() {
               })
             }
           />
+        </Section>
+
+        {/* Newsletter */}
+        <Section title="NEWSLETTER">
+          <div className="flex flex-col gap-3 border border-foreground/30 p-4">
+            <div className="flex items-center justify-between">
+              <span className="label-mono text-[11px] opacity-60">
+                {subscribers.length} kayıt
+              </span>
+              <button
+                type="button"
+                onClick={loadNewsletterSubscribers}
+                className="label-mono text-[11px] underline-offset-2 hover:underline"
+              >
+                Yenile ↗
+              </button>
+            </div>
+            {subscribers.length === 0 ? (
+              <p className="label-mono text-[12px] opacity-60">
+                Henüz newsletter kaydı yok.
+              </p>
+            ) : (
+              <ul className="flex flex-col divide-y divide-foreground/20">
+                {subscribers.map((subscriber) => (
+                  <li
+                    key={subscriber.email}
+                    className="grid gap-1 py-3 md:grid-cols-[1fr_auto] md:items-center"
+                  >
+                    <a
+                      href={`mailto:${subscriber.email}`}
+                      className="label-mono text-[13px] underline-offset-2 hover:underline"
+                    >
+                      {subscriber.email}
+                    </a>
+                    <span className="label-mono text-[11px] opacity-60">
+                      {new Date(subscriber.createdAt).toLocaleString("de-DE")}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </Section>
       </div>
 

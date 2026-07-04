@@ -12,13 +12,26 @@ export function Footer() {
   const { lang, t } = useLanguage();
   const { footer, contact } = useContent();
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "saving" | "ok" | "error">("idle");
 
-  function handleSubscribe(e: React.FormEvent) {
+  async function handleSubscribe(e: React.FormEvent) {
     e.preventDefault();
     if (!email) return;
-    setSubmitted(true);
-    setEmail("");
+    setStatus("saving");
+
+    const res = await fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    });
+
+    if (res.ok) {
+      setStatus("ok");
+      setEmail("");
+      setTimeout(() => setStatus("idle"), 3000);
+    } else {
+      setStatus("error");
+    }
   }
 
   return (
@@ -57,11 +70,25 @@ export function Footer() {
               />
               <button
                 type="submit"
+                disabled={status === "saving"}
                 className="label-mono shrink-0 py-2 pl-4 text-[12px] transition-opacity hover:opacity-60"
               >
-                  {submitted ? "✓ Done" : `${t.subscribe} ↗`}
+                {status === "saving"
+                  ? lang === "de"
+                    ? "Speichert..."
+                    : "Saving..."
+                  : status === "ok"
+                    ? "✓ Done"
+                    : `${t.subscribe} ↗`}
               </button>
             </form>
+            {status === "error" && (
+              <p className="label-mono text-[11px]">
+                {lang === "de"
+                  ? "Das hat nicht geklappt. Bitte versuch es erneut."
+                  : "That did not work. Please try again."}
+              </p>
+            )}
           </div>
 
           {/* Contact */}
