@@ -30,6 +30,9 @@ export function Feature() {
     const onMeta = () => setDuration(v.duration);
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
+    v.muted = true;
+    v.playsInline = true;
+    void v.play().catch(() => setPlaying(false));
     // sync initial state in case events already fired (cached/fast load)
     const sync = requestAnimationFrame(() => {
       if (Number.isFinite(v.duration)) setDuration(v.duration);
