@@ -32,7 +32,7 @@ export function Contact() {
         </div>
 
         {/* Details */}
-        <div className="label-mono flex flex-col gap-6 self-center text-[14px] uppercase md:text-[16px]">
+        <div className="label-mono flex flex-col gap-6 self-center text-[14px] normal-case md:text-[16px]">
           <div>
             <p className="mb-1 opacity-60">{lang === "de" ? "ADRESSE" : "ADDRESS"}</p>
             <p>{contact.address}</p>

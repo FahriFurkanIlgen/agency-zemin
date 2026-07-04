@@ -40,7 +40,7 @@ export function About() {
 
         {body && (
           <div className="label-mono self-end text-[13px] leading-relaxed md:max-w-md md:text-[15px]">
-            <p className="uppercase">{body}</p>
+            <p className="normal-case">{body}</p>
           </div>
         )}
       </div>

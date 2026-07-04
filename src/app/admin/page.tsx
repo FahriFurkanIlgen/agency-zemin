@@ -730,6 +730,17 @@ function CallEditor({
   onChange: (c: OpenCallItem) => void;
   onRemove: () => void;
 }) {
+  function handleImageUpload(file: File | undefined) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        onChange({ ...call, imageUrl: reader.result });
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
   return (
     <div className="flex flex-col gap-3 border border-foreground/30 p-4">
       <div className="flex items-center justify-between">
@@ -777,6 +788,29 @@ function CallEditor({
         value={call.gradient}
         onChange={(gradient) => onChange({ ...call, gradient })}
       />
+      <Field
+        label="Bild URL"
+        value={call.imageUrl || ""}
+        onChange={(imageUrl) => onChange({ ...call, imageUrl })}
+      />
+      <label className="flex flex-col gap-1.5">
+        <span className="label-mono text-[10px] opacity-50">Bild hochladen</span>
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(e) => handleImageUpload(e.target.files?.[0])}
+          className="label-mono text-[11px] file:mr-4 file:border file:border-foreground/30 file:bg-transparent file:px-3 file:py-2 file:text-foreground"
+        />
+      </label>
+      {call.imageUrl && (
+        <button
+          type="button"
+          onClick={() => onChange({ ...call, imageUrl: "" })}
+          className="label-mono w-fit text-[11px] underline-offset-2 hover:underline"
+        >
+          BILD ENTFERNEN
+        </button>
+      )}
     </div>
   );
 }

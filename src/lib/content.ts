@@ -300,7 +300,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     ],
   },
   contact: {
-    heading: { de: "KONTAKT", en: "CONTACT" },
+    heading: { de: "MELDE DICH", en: "GET IN TOUCH" },
     address: "Urbanstr. 3, 10961 Berlin",
     email: "info@zeminberlin.de",
     phone: "+49 15569070168",
@@ -312,7 +312,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   footer: {
     headingLines: {
       de: "Lass uns\netwas\nhier —\nzusammen\nmachen.",
-      en: "Let's make\nsomething\nhere —\ntogether.",
+      en: "Let's make something together.",
     },
   },
 };

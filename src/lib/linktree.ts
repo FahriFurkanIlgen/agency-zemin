@@ -21,6 +21,16 @@ function stripTags(value: string) {
   return decodeEntities(value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim());
 }
 
+function titleCase(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/(^|[\s|:—-])([a-zäöüß])/g, (_, prefix: string, letter: string) => {
+      return `${prefix}${letter.toLocaleUpperCase("de-DE")}`;
+    })
+    .replace(/\bA\|V\b/g, "A|V")
+    .replace(/\bZemin\b/g, "ZEMIN");
+}
+
 function titleToDescription(title: string) {
   const normalized = title.replace(/\s*\|\s*Open Call\s*$/i, "").trim();
   if (/organize your event/i.test(normalized)) {
@@ -46,10 +56,11 @@ function parseOpenCalls(html: string): OpenCallItem[] {
 
     seen.add(href);
     const index = calls.length;
+    const displayTitle = titleCase(title);
     calls.push({
       id: `linktree-open-call-${index + 1}`,
       num: `(${String(index + 1).padStart(2, "0")})`,
-      title: { de: title.toUpperCase(), en: title.toUpperCase() },
+      title: { de: displayTitle, en: displayTitle },
       deadline: { de: "BEWERBUNG VIA LINKTREE", en: "APPLY VIA LINKTREE" },
       description: titleToDescription(title),
       status: { de: "OFFEN", en: "OPEN" },
@@ -60,6 +71,34 @@ function parseOpenCalls(html: string): OpenCallItem[] {
   }
 
   return calls;
+}
+
+function normalize(value: string) {
+  return value.trim().toLowerCase();
+}
+
+function findStoredCall(call: OpenCallItem, items: OpenCallItem[]) {
+  return items.find((item) => {
+    if (item.applyHref && item.applyHref === call.applyHref) return true;
+    if (item.id && item.id === call.id) return true;
+    return normalize(item.title.de) === normalize(call.title.de);
+  });
+}
+
+function isDefaultImage(imageUrl: string) {
+  return (
+    imageUrl === DEFAULT_OPEN_CALL_IMAGE ||
+    imageUrl.startsWith("/images/open-call-default.")
+  );
+}
+
+function mergeStoredImages(calls: OpenCallItem[], storedCalls: OpenCallItem[]) {
+  return calls.map((call) => {
+    const stored = findStoredCall(call, storedCalls);
+    const imageUrl = stored?.imageUrl?.trim();
+    if (!imageUrl || isDefaultImage(imageUrl)) return call;
+    return { ...call, imageUrl };
+  });
 }
 
 export async function withLinktreeOpenCalls(content: SiteContent): Promise<SiteContent> {
@@ -77,7 +116,10 @@ export async function withLinktreeOpenCalls(content: SiteContent): Promise<SiteC
     });
     if (!response.ok) return content;
 
-    const calls = parseOpenCalls(await response.text());
+    const calls = mergeStoredImages(
+      parseOpenCalls(await response.text()),
+      content.openCalls.items,
+    );
     if (calls.length === 0) return content;
 
     return {

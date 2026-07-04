@@ -65,7 +65,7 @@ export function Footer() {
           </div>
 
           {/* Contact */}
-          <div className="label-mono flex flex-col gap-3 text-[14px] uppercase md:text-[16px]">
+          <div className="label-mono flex flex-col gap-3 text-[14px] normal-case md:text-[16px]">
             <a
               href={`mailto:${contact.email}`}
               className="flex items-center justify-between border-b border-foreground/30 pb-2 transition-opacity hover:opacity-60"

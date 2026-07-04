@@ -54,7 +54,7 @@ export function OpenCalls() {
             <h4 className="display-pressura mb-2 text-[7vw] leading-[0.9] md:text-[clamp(1.4rem,2.2vw,2rem)]">
               {L(call.title, lang)}
             </h4>
-            <p className="label-mono mb-4 text-[12px] uppercase leading-relaxed opacity-90">
+            <p className="label-mono mb-4 text-[12px] normal-case leading-relaxed opacity-90">
               {L(call.description, lang)}
             </p>
             <div className="mt-auto flex items-center justify-between border-t border-foreground/30 pt-3">
