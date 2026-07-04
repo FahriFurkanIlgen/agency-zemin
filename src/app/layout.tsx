@@ -11,7 +11,7 @@ import { getContent } from "@/lib/store";
 const splineMono = Spline_Sans_Mono({
   variable: "--font-pressura",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
 });
 
 // Monument Grotesk (clean grotesque sans) → Space Grotesk

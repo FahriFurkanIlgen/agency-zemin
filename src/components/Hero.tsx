@@ -173,7 +173,7 @@ export function Hero() {
       </div>
 
       {/* Overlaid content */}
-      <div className="pointer-events-none relative z-30 flex h-full flex-col justify-between pt-36 pb-6 text-background md:pt-52">
+      <div className="pointer-events-none relative z-30 flex h-full flex-col justify-between pt-36 pb-6 text-foreground md:pt-52">
         {/* Headline block — hidden for now */}
         {false && (
           <div className="flex flex-1 flex-col items-center justify-center gap-6 px-5 text-center md:gap-8">
@@ -204,7 +204,7 @@ export function Hero() {
             <span className="hidden text-center md:block">{L(hero.scroll, lang)}</span>
             <span className="text-right">©2026</span>
           </div>
-          <div className="label-mono flex items-center justify-between border-t border-background/25 pt-3 text-[11px]">
+          <div className="label-mono flex items-center justify-between border-t border-foreground/25 pt-3 text-[11px]">
             <div className="pointer-events-auto flex items-center gap-4 md:cursor-none">
               <button
                 type="button"

@@ -52,7 +52,7 @@
 
 :root {
   /* Valiente palette: warm light grey bg, bright red foreground */
-  --background: #dddbd6;
+  --background: #000000;
   --foreground: #ff1a00;
   --valiente-red: #ff1a00;
   --valiente-grey: #dddbd6;
@@ -231,6 +231,18 @@
   }
   .cursor-dot.is-active {
     opacity: 0;
+  }
+  html.menu-open .cursor-ring {
+    border-color: #000000;
+  }
+  html.menu-open .cursor-dot {
+    background: #000000;
+  }
+  html.menu-open .cursor-dot.is-active {
+    opacity: 1;
+  }
+  html.menu-open .cursor-ring.is-active {
+    background: color-mix(in oklab, #000000 12%, transparent);
   }
   /* Hide the small global cursor while the hero reel button is active */
   html.reel-hover .cursor-ring,

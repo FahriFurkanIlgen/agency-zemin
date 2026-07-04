@@ -46,15 +46,12 @@ export function Nav() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 md:bg-transparent md:mix-blend-multiply ${
-          hideChrome ? "bg-transparent mix-blend-multiply" : "bg-background"
-        }`}
-      >
+      <header className="fixed inset-x-0 top-0 z-50 bg-black/80">
+        <div aria-hidden className="absolute inset-x-0 top-[5px] h-px bg-foreground" />
         <div className="px-5 py-4 md:px-6 md:py-5">
           <nav className="flex items-center justify-between md:items-start">
-            {/* Left menu */}
-            <div className="hidden flex-col gap-3 md:flex">
+            {/* Left menu (hidden — replaced by the overlay menu on all sizes) */}
+            <div className="hidden">
             <ul className="label-mono flex flex-col gap-[3px] text-[15px] font-medium leading-tight">
               {NAV_LINKS.map((link) => (
                 <li key={link.id}>
@@ -97,23 +94,23 @@ export function Nav() {
             </div>
           </div>
 
-          {/* Center logo */}
+          {/* Logo (left) */}
           <Link
             href="/"
-            aria-label="ZEMIN"
-            className={`display-pressura text-[26px] font-medium tracking-tight transition-[opacity,transform] duration-300 md:absolute md:left-1/2 md:top-5 md:-translate-x-1/2 md:text-[30px] md:!translate-y-0 md:!opacity-100 ${
+            aria-label="ZEMIN BERLIN"
+            className={`display-pressura text-[26px] font-semibold tracking-tight transition-[opacity,transform] duration-300 md:text-[30px] md:!translate-y-0 md:!opacity-100 ${
               hideChrome
                 ? "-translate-y-3 opacity-0 pointer-events-none"
                 : "translate-y-0 opacity-100"
             }`}
           >
-            ZEMIN<sup className="text-[10px] align-super">®</sup>
+            ZEMIN BERLIN<sup className="text-[10px] align-super">®</sup>
           </Link>
 
-          {/* Right: vertical CTA (desktop) */}
+          {/* Right: vertical CTA (hidden — replaced by the overlay menu) */}
           <Link
             href="/#contact"
-            className="group hidden flex-col items-center gap-4 md:flex"
+            className="group hidden"
             aria-label="Get in touch"
           >
             <span className="label-mono whitespace-pre text-center text-[15px] font-medium uppercase leading-[1.05] [writing-mode:vertical-rl] rotate-180">
@@ -137,13 +134,13 @@ export function Nav() {
             </span>
           </Link>
 
-          {/* Right: mobile menu trigger */}
+          {/* Right: menu trigger (all sizes) */}
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
             aria-label="Menü öffnen"
             aria-expanded={menuOpen}
-            className="ml-auto flex h-9 w-9 items-center justify-center md:hidden"
+            className="ml-auto flex h-9 w-9 items-center justify-center"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -169,18 +166,18 @@ export function Nav() {
       )}
     </header>
 
-      {/* Full-screen mobile overlay menu */}
+      {/* Full-screen overlay menu (all sizes) */}
       {menuOpen && (
-        <div className="fixed inset-0 z-[60] flex flex-col bg-foreground px-5 py-4 text-background md:hidden">
+        <div className="fixed inset-0 z-[60] flex min-h-0 flex-col overflow-hidden bg-foreground px-5 py-4 text-background md:px-6 md:py-5">
           {/* Top row: logo + close */}
           <div className="flex items-center justify-between">
             <Link
               href="/"
               onClick={() => setMenuOpen(false)}
-              aria-label="ZEMIN"
-              className="display-pressura text-[26px] font-medium tracking-tight"
+              aria-label="ZEMIN BERLIN"
+              className="display-pressura text-[26px] font-semibold tracking-tight"
             >
-              ZEMIN<sup className="text-[10px] align-super">®</sup>
+              ZEMIN BERLIN<sup className="text-[10px] align-super">®</sup>
             </Link>
             <button
               type="button"
@@ -200,14 +197,14 @@ export function Nav() {
           </div>
 
           {/* Links */}
-          <nav className="mt-10 flex flex-1 flex-col justify-center">
-            <ul className="display-pressura flex flex-col gap-1 uppercase">
+          <nav className="mt-6 flex min-h-0 flex-1 flex-col justify-center md:mt-10">
+            <ul className="display-pressura flex flex-col gap-0.5 uppercase md:gap-1">
               {NAV_LINKS.map((link) => (
                 <li key={link.id}>
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="block text-[11vw] leading-[1.05] tracking-tight transition-opacity hover:opacity-60"
+                    className="block text-[clamp(42px,10vw,86px)] leading-[0.95] tracking-tight transition-opacity hover:opacity-60 md:text-[clamp(56px,7vw,118px)]"
                   >
                     {link[lang]}
                   </Link>
@@ -217,7 +214,7 @@ export function Nav() {
 
             {/* Language toggle */}
             <div
-              className="label-mono mt-8 flex items-center gap-2 text-[13px]"
+              className="label-mono mt-5 flex items-center gap-2 text-[13px] md:mt-8"
               role="group"
               aria-label="Language"
             >
@@ -244,13 +241,13 @@ export function Nav() {
           {/* Oversized wordmark */}
           <div
             aria-hidden
-            className="display-pressura -mb-2 select-none text-[26vw] font-medium leading-[0.8] tracking-tight"
+            className="display-pressura -mb-1 shrink-0 select-none text-[clamp(60px,20vw,120px)] font-semibold leading-[0.78] tracking-tight md:-mb-2 md:text-[clamp(110px,15vw,220px)]"
           >
-            ZEMIN<sup className="text-[0.35em] align-super">®</sup>
+            ZEMIN BERLIN<sup className="text-[0.35em] align-super">®</sup>
           </div>
 
           {/* Footer row */}
-          <div className="label-mono mt-4 flex items-center justify-between text-[10px] uppercase">
+          <div className="label-mono mt-3 flex shrink-0 items-center justify-between text-[10px] uppercase md:mt-4">
             <span>BERLIN</span>
             <span>©2026 ZEMIN</span>
             <Link href="/datenschutz" onClick={() => setMenuOpen(false)}>

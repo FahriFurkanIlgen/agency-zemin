@@ -102,8 +102,8 @@ export function Footer() {
 
       {/* Giant wordmark */}
       <div className="my-12 flex justify-center md:my-0">
-        <span className="display-pressura text-[22vw] leading-none font-medium tracking-tight">
-          ZEMIN<sup className="text-[5vw] align-super">®</sup>
+        <span className="display-pressura text-[18vw] leading-none font-medium tracking-tight">
+          ZEMIN BERLIN<sup className="text-[4vw] align-super">®</sup>
         </span>
       </div>
 
