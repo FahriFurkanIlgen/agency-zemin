@@ -4,14 +4,10 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { NAV_LINKS } from "@/lib/site";
 import { useLanguage } from "./LanguageProvider";
-import { useContent } from "./ContentProvider";
-import { L } from "@/lib/content";
 
 export function Nav() {
   const { lang, toggle, t } = useLanguage();
-  const { headerStatement } = useContent();
   const [menuOpen, setMenuOpen] = useState(false);
-  const [hideChrome, setHideChrome] = useState(false);
 
   const openMenu = () => {
     setMenuOpen(true);
@@ -20,19 +16,6 @@ export function Nav() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
-
-  // Hide logo + statement strip when scrolling down, reveal on scroll up (mobile)
-  useEffect(() => {
-    let lastY = window.scrollY;
-    const onScroll = () => {
-      const y = window.scrollY;
-      if (y > lastY && y > 80) setHideChrome(true);
-      else if (y < lastY) setHideChrome(false);
-      lastY = y;
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // Scroll lock + Escape to close while the mobile overlay is open
   useEffect(() => {
@@ -107,11 +90,7 @@ export function Nav() {
           <Link
             href="/"
             aria-label="ZEMIN BERLIN"
-            className={`display-pressura text-[26px] font-semibold tracking-tight transition-[opacity,transform] duration-300 md:text-[30px] md:!translate-y-0 md:!opacity-100 ${
-              hideChrome
-                ? "-translate-y-3 opacity-0 pointer-events-none"
-                : "translate-y-0 opacity-100"
-            }`}
+            className="display-pressura text-[26px] font-semibold tracking-tight md:text-[30px]"
           >
             ZEMIN BERLIN
           </Link>
@@ -163,16 +142,6 @@ export function Nav() {
         </nav>
       </div>
 
-      {/* Site-wide header statement strip — hidden for now */}
-      {false && (
-        <p
-          className={`label-mono border-y border-foreground/20 px-5 py-1.5 text-[10px] leading-tight transition-opacity duration-300 md:px-6 md:text-[11px] md:!opacity-100 ${
-            hideChrome ? "opacity-0 pointer-events-none" : "opacity-100"
-          }`}
-        >
-          {L(headerStatement, lang)}
-        </p>
-      )}
     </header>
 
       {/* Full-screen overlay menu (all sizes) */}

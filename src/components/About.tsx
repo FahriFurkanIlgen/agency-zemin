@@ -5,6 +5,37 @@ import { useLanguage } from "./LanguageProvider";
 import { useContent } from "./ContentProvider";
 import { L, lines } from "@/lib/content";
 
+const ANIMATED_HEADING_WORDS = new Set([
+  "Production",
+  "Kreuzberg",
+  "Hosting",
+  "Supporting",
+  "Artistic",
+]);
+
+function renderHeadingLine(line: string, lineIndex: number) {
+  return line.split(/(\s+)/).map((part, partIndex) => {
+    if (/^\s+$/.test(part)) return part;
+
+    const word = part.replace(/[^A-Za-z|]+$/g, "");
+    if (!ANIMATED_HEADING_WORDS.has(word)) {
+      return <span key={`${lineIndex}-${partIndex}`}>{part}</span>;
+    }
+
+    return (
+      <ScrambleText
+        key={`${lineIndex}-${partIndex}`}
+        as="span"
+        text={part}
+        className="inline-block"
+        delay={lineIndex * 120 + partIndex * 35}
+        speed={0.8}
+        stableWidth
+      />
+    );
+  });
+}
+
 export function About() {
   const { lang } = useLanguage();
   const { about } = useContent();
@@ -28,13 +59,9 @@ export function About() {
         {/* Big headline */}
         <h2 className={`display-pressura text-[clamp(2.6rem,10vw,6rem)] leading-[0.9] break-words hyphens-auto md:text-[clamp(2.5rem,5vw,5.5rem)] ${body ? "" : "md:col-span-2 md:text-[clamp(3rem,6.5vw,7rem)]"}`}>
           {lines(about.headingLines, lang).map((line, i) => (
-            <ScrambleText
-              key={`${lang}-${i}`}
-              as="span"
-              text={line}
-              className="block"
-              delay={i * 120}
-            />
+            <span key={`${lang}-${i}`} className="block">
+              {renderHeadingLine(line, i)}
+            </span>
           ))}
         </h2>
 

@@ -13,6 +13,8 @@ type ScrambleTextProps = {
   delay?: number;
   /** speed of the resolve, lower is faster */
   speed?: number;
+  /** keep the final text width in layout while the scramble runs */
+  stableWidth?: boolean;
 };
 
 /**
@@ -25,6 +27,7 @@ export function ScrambleText({
   as: Tag = "span",
   delay = 0,
   speed = 1,
+  stableWidth = false,
 }: ScrambleTextProps) {
   const ref = useRef<HTMLElement>(null);
   const [display, setDisplay] = useState(text);
@@ -81,6 +84,23 @@ export function ScrambleText({
       cancelAnimationFrame(raf);
     };
   }, [text, delay, speed]);
+
+  if (stableWidth) {
+    return (
+      <Tag
+        ref={ref as React.Ref<HTMLElement & HTMLDivElement>}
+        className={cn("relative inline-block overflow-hidden align-baseline", className)}
+        aria-label={text}
+      >
+        <span className="invisible whitespace-pre" aria-hidden="true">
+          {text}
+        </span>
+        <span className="absolute top-0 left-0 whitespace-pre" aria-hidden="true">
+          {display}
+        </span>
+      </Tag>
+    );
+  }
 
   return (
     <Tag
