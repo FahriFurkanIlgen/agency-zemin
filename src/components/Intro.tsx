@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const WORD = "ZEMIN";
+const WORD = "ZEMIN BERLIN";
 const CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const DURATION = 1500; // ms until reveal starts
 
 /**
  * Valiente-style opening sequence: a full-screen panel that scrambles the
- * ZEMIN wordmark while a counter runs to 100, then slides up to reveal the
+ * ZEMIN BERLIN wordmark while a counter runs to 100, then slides up to reveal the
  * page. Plays once per browser session.
  */
 export function Intro() {
@@ -84,7 +84,6 @@ export function Intro() {
       <div className="intro-inner">
         <span className="intro-word display-pressura">
           {display}
-          <sup className="intro-reg">®</sup>
         </span>
       </div>
       <div className="intro-meta label-mono">

@@ -13,6 +13,14 @@ export function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [hideChrome, setHideChrome] = useState(false);
 
+  const openMenu = () => {
+    setMenuOpen(true);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   // Hide logo + statement strip when scrolling down, reveal on scroll up (mobile)
   useEffect(() => {
     let lastY = window.scrollY;
@@ -35,7 +43,7 @@ export function Nav() {
       root.classList.remove("menu-open");
     }
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") closeMenu();
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -47,10 +55,10 @@ export function Nav() {
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-black/80">
-        <div aria-hidden className="absolute inset-x-0 top-[5px] h-px bg-foreground" />
-        <div aria-hidden className="absolute inset-x-0 bottom-[5px] h-px bg-foreground" />
+        <div aria-hidden className="absolute inset-x-0 top-[14px] h-px bg-foreground" />
+        <div aria-hidden className="absolute inset-x-0 bottom-[14px] h-px bg-foreground" />
         <div className="px-5 py-4 md:px-6 md:py-5">
-          <nav className="flex items-center justify-between md:items-start">
+          <nav className="flex items-center justify-between">
             {/* Left menu (hidden — replaced by the overlay menu on all sizes) */}
             <div className="hidden">
             <ul className="label-mono flex flex-col gap-[3px] text-[15px] font-medium leading-tight">
@@ -105,7 +113,7 @@ export function Nav() {
                 : "translate-y-0 opacity-100"
             }`}
           >
-            ZEMIN BERLIN<sup className="text-[10px] align-super">®</sup>
+            ZEMIN BERLIN
           </Link>
 
           {/* Right: vertical CTA (hidden — replaced by the overlay menu) */}
@@ -138,7 +146,7 @@ export function Nav() {
           {/* Right: menu trigger (all sizes) */}
           <button
             type="button"
-            onClick={() => setMenuOpen(true)}
+            onClick={openMenu}
             aria-label="Menü öffnen"
             aria-expanded={menuOpen}
             className="ml-auto flex h-9 w-9 items-center justify-center"
@@ -169,20 +177,20 @@ export function Nav() {
 
       {/* Full-screen overlay menu (all sizes) */}
       {menuOpen && (
-        <div className="menu-overlay fixed inset-0 z-[60] flex min-h-0 flex-col overflow-hidden bg-foreground px-5 py-4 text-background md:px-6 md:py-5">
+        <div className="fixed inset-0 z-[60] flex min-h-0 flex-col overflow-hidden bg-foreground px-5 py-4 text-background md:px-6 md:py-5">
           {/* Top row: logo + close */}
           <div className="menu-chrome flex items-center justify-between">
             <Link
               href="/"
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
               aria-label="ZEMIN BERLIN"
               className="display-pressura text-[26px] font-semibold tracking-tight"
             >
-              ZEMIN BERLIN<sup className="text-[10px] align-super">®</sup>
+              ZEMIN BERLIN
             </Link>
             <button
               type="button"
-              onClick={() => setMenuOpen(false)}
+              onClick={closeMenu}
               aria-label="Menü schließen"
               className="flex h-10 w-10 items-center justify-center"
             >
@@ -204,7 +212,7 @@ export function Nav() {
                 <li key={link.id}>
                   <Link
                     href={link.href}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={closeMenu}
                     className="block text-[clamp(42px,10vw,86px)] leading-[0.95] tracking-tight transition-opacity hover:opacity-60 md:text-[clamp(56px,7vw,118px)]"
                   >
                     {link[lang]}
@@ -244,14 +252,14 @@ export function Nav() {
             aria-hidden
             className="menu-wordmark display-pressura -mb-1 shrink-0 select-none text-[clamp(60px,20vw,120px)] font-semibold leading-[0.78] tracking-tight md:-mb-2 md:text-[clamp(110px,15vw,220px)]"
           >
-            ZEMIN BERLIN<sup className="text-[0.35em] align-super">®</sup>
+            ZEMIN BERLIN
           </div>
 
           {/* Footer row */}
           <div className="menu-chrome label-mono mt-3 flex shrink-0 items-center justify-between text-[10px] uppercase md:mt-4">
             <span>BERLIN</span>
             <span>©2026 ZEMIN</span>
-            <Link href="/datenschutz" onClick={() => setMenuOpen(false)}>
+            <Link href="/datenschutz" onClick={closeMenu}>
               {t.privacy}
             </Link>
           </div>

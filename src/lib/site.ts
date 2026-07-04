@@ -7,8 +7,7 @@ export const SITE = {
   address: "Urbanstr. 3, 10961 Berlin",
   email: "info@zeminberlin.de",
   phone: "+49 15569070168",
-  instagram: "https://www.instagram.com/",
-  facebook: "https://www.facebook.com/",
+  instagram: "https://www.instagram.com/zeminberlin/",
   mapsQuery: "Urbanstr.+3,+10961+Berlin",
 } as const;
 

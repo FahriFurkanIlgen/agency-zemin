@@ -69,7 +69,6 @@ export type SiteContent = {
     email: string;
     phone: string;
     instagram: string;
-    facebook: string;
     mapsQuery: string;
   };
   footer: {
@@ -111,15 +110,15 @@ export const DEFAULT_CONTENT: SiteContent = {
     },
   },
   about: {
-    metaLeft: { de: "KREUZBERG\nBERLIN", en: "KREUZBERG\nBERLIN" },
-    metaRight: { de: "EST\n(2025)", en: "EST\n(2025)" },
+    metaLeft: { de: "", en: "" },
+    metaRight: { de: "", en: "" },
     headingLines: {
-      de: "EIN\nUNABHÄNGIGER\nPRODUKTIONS-\nORT FÜR\nHYBRIDE\nKUNST",
-      en: "AN\nINDEPENDENT\nPRODUCTION\nSITE FOR\nHYBRID\nART",
+      de: "Zemin Berlin Art Space:\nAn independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
+      en: "Zemin Berlin Art Space:\nAn independent production site in Kreuzberg, dedicated to hosting\nand supporting interdisciplinary artistic practices.",
     },
     body: {
-      de: "Zemin ist ein Kunstraum im Herzen von Kreuzberg, Berlin. Wir beherbergen und unterstützen interdisziplinäre künstlerische Praktiken — Performances, Ausstellungen, Workshops und Begegnungen. Ein Boden zum Experimentieren, wo Ideen auf Raum treffen und sich Gemeinschaften rund um die Arbeit versammeln.",
-      en: "Zemin is an art space in the heart of Kreuzberg, Berlin. We host and support interdisciplinary artistic practices — performances, exhibitions, workshops and gatherings. A ground for experimentation, where ideas meet space, and communities meet around the work.",
+      de: "",
+      en: "",
     },
   },
   feature: {
@@ -295,8 +294,7 @@ export const DEFAULT_CONTENT: SiteContent = {
     address: "Urbanstr. 3, 10961 Berlin",
     email: "info@zeminberlin.de",
     phone: "+49 15569070168",
-    instagram: "https://www.instagram.com/",
-    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/zeminberlin/",
     mapsQuery: "Urbanstr.+3,+10961+Berlin",
   },
   footer: {

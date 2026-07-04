@@ -492,16 +492,6 @@ export default function AdminPage() {
             }
           />
           <PlainField
-            label="Facebook URL"
-            value={content.contact.facebook}
-            onChange={(v) =>
-              setContent({
-                ...content,
-                contact: { ...content.contact, facebook: v },
-              })
-            }
-          />
-          <PlainField
             label="Google Maps Query"
             value={content.contact.mapsQuery}
             onChange={(v) =>

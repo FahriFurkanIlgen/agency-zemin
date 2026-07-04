@@ -87,14 +87,6 @@ export function Footer() {
               >
                 INSTAGRAM ↗
               </a>
-              <a
-                href={contact.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-sweep"
-              >
-                FACEBOOK ↗
-              </a>
             </div>
           </div>
         </div>
@@ -103,7 +95,7 @@ export function Footer() {
       {/* Giant wordmark */}
       <div className="my-12 flex justify-center md:my-0">
         <span className="display-pressura text-[18vw] leading-none font-medium tracking-tight">
-          ZEMIN BERLIN<sup className="text-[4vw] align-super">®</sup>
+          ZEMIN BERLIN
         </span>
       </div>
 
