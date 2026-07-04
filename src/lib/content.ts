@@ -1,5 +1,7 @@
 import type { Lang } from "./site";
 
+export const DEFAULT_OPEN_CALL_IMAGE = "/images/open-call-default.png?v=2";
+
 export type Localized = { de: string; en: string };
 
 export type EventItem = {
@@ -20,6 +22,7 @@ export type OpenCallItem = {
   status: Localized;
   applyHref: string;
   gradient: string;
+  imageUrl?: string;
 };
 
 export type ValueItem = {
@@ -69,6 +72,7 @@ export type SiteContent = {
     email: string;
     phone: string;
     instagram: string;
+    linktree: string;
     mapsQuery: string;
   };
   footer: {
@@ -203,41 +207,47 @@ export const DEFAULT_CONTENT: SiteContent = {
       {
         id: "c1",
         num: "(01)",
-        title: { de: "RESIDENZ 2026", en: "RESIDENCY 2026" },
-        deadline: { de: "FRIST 31.08.2026", en: "DEADLINE 31.08.2026" },
+        title: { de: "ORGANIZE YOUR EVENT AT ZEMIN BERLIN", en: "ORGANIZE YOUR EVENT AT ZEMIN BERLIN" },
+        deadline: { de: "BEWERBUNG VIA LINKTREE", en: "APPLY VIA LINKTREE" },
         description: {
-          de: "Eine dreimonatige Produktionsresidenz für interdisziplinäre Künstler:innen, die in den Bereichen Klang, Performance und Installation arbeiten. Studiozugang, Mentoring und eine öffentliche Präsentation bei Zemin.",
-          en: "A three-month production residency for interdisciplinary artists working across sound, performance and installation. Studio access, mentorship and a public showing at Zemin.",
+          de: "Open Call für Veranstaltungen, künstlerische Formate und gemeinschaftliche Programme bei Zemin Berlin.",
+          en: "Open call for events, artistic formats and community programs at Zemin Berlin.",
         },
         status: { de: "OFFEN", en: "OPEN" },
-        applyHref: "/booking",
+        applyHref:
+          "https://docs.google.com/forms/d/e/1FAIpQLSfqi_AGBy1Pjq3axn2oMbO9cY4ZmNcbUIu7RoGMNdV1wDLtWA/viewform?usp=header",
         gradient: "linear-gradient(135deg, #2a6f5a, #0e3b32)",
+        imageUrl: DEFAULT_OPEN_CALL_IMAGE,
       },
       {
         id: "c2",
         num: "(02)",
-        title: { de: "ERDGESCHOSS-AUSSTELLUNG", en: "GROUND FLOOR EXHIBITION" },
-        deadline: { de: "FRIST 15.07.2026", en: "DEADLINE 15.07.2026" },
+        title: { de: "A|V CHEMY", en: "A|V CHEMY" },
+        deadline: { de: "BEWERBUNG VIA LINKTREE", en: "APPLY VIA LINKTREE" },
         description: {
-          de: "Open Call für aufstrebende Künstler:innen, in unserem Hauptsaal auszustellen. Wir freuen uns über Vorschläge, die auf den rohen, industriellen Charakter des Raums reagieren.",
-          en: "Open call for emerging artists to exhibit in our main hall. We welcome proposals that respond to the raw, industrial character of the space.",
+          de: "Open Call für audiovisuelle Experimente, performative Formate und hybride künstlerische Beiträge.",
+          en: "Open call for audiovisual experiments, performative formats and hybrid artistic contributions.",
         },
-        status: { de: "ENDET BALD", en: "CLOSING SOON" },
-        applyHref: "/booking",
+        status: { de: "OFFEN", en: "OPEN" },
+        applyHref:
+          "https://docs.google.com/forms/d/e/1FAIpQLSfo1EpMzaRZ2YMBGSMrY9n_HTcn21m3khUcuy_3LzKxC-AFfA/viewform?usp=header",
         gradient: "linear-gradient(135deg, #c2603f, #5e2516)",
+        imageUrl: DEFAULT_OPEN_CALL_IMAGE,
       },
       {
         id: "c3",
         num: "(03)",
-        title: { de: "WORKSHOP-REIHE", en: "WORKSHOP SERIES" },
+        title: { de: "ANALOG FLUX", en: "ANALOG FLUX" },
         deadline: { de: "LAUFENDE BEWERBUNGEN", en: "ROLLING APPLICATIONS" },
         description: {
-          de: "Vermittler:innen und Pädagog:innen sind eingeladen, praxisorientierte Workshops für unsere Community vorzuschlagen — von Bewegung und Druckgrafik bis zu digitaler Praxis.",
-          en: "Facilitators and educators are invited to propose hands-on workshops for our community program — from movement and printmaking to digital practice.",
+          de: "Open Call für analoge Prozesse, fluide Bildwelten und experimentelle künstlerische Praktiken.",
+          en: "Open call for analog processes, fluid image worlds and experimental artistic practices.",
         },
         status: { de: "OFFEN", en: "OPEN" },
-        applyHref: "/booking",
+        applyHref:
+          "https://docs.google.com/forms/d/e/1FAIpQLSdI0C4PFWsVN967dZDSveRkAd9FeUDitHoufgrIFgZHl2y32Q/viewform?usp=publish-editor",
         gradient: "linear-gradient(135deg, #6a4ea0, #2b1d4f)",
+        imageUrl: DEFAULT_OPEN_CALL_IMAGE,
       },
     ],
   },
@@ -295,6 +305,8 @@ export const DEFAULT_CONTENT: SiteContent = {
     email: "info@zeminberlin.de",
     phone: "+49 15569070168",
     instagram: "https://www.instagram.com/zeminberlin/",
+    linktree:
+      "https://linktr.ee/zeminberlin?utm_source=ig&utm_medium=social&utm_content=link_in_bio",
     mapsQuery: "Urbanstr.+3,+10961+Berlin",
   },
   footer: {

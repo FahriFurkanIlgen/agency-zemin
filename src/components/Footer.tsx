@@ -87,6 +87,14 @@ export function Footer() {
               >
                 INSTAGRAM ↗
               </a>
+              <a
+                href={contact.linktree}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-sweep"
+              >
+                LINKTREE ↗
+              </a>
             </div>
           </div>
         </div>

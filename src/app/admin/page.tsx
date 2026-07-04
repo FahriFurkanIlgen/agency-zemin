@@ -492,6 +492,16 @@ export default function AdminPage() {
             }
           />
           <PlainField
+            label="Linktree URL"
+            value={content.contact.linktree}
+            onChange={(v) =>
+              setContent({
+                ...content,
+                contact: { ...content.contact, linktree: v },
+              })
+            }
+          />
+          <PlainField
             label="Google Maps Query"
             value={content.contact.mapsQuery}
             onChange={(v) =>

@@ -272,6 +272,12 @@
   html.menu-open body {
     overflow: hidden;
   }
+  .open-calls-slider {
+    scrollbar-width: none;
+  }
+  .open-calls-slider::-webkit-scrollbar {
+    display: none;
+  }
   .intro {
     position: fixed;
     inset: 0;
