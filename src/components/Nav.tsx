@@ -48,6 +48,7 @@ export function Nav() {
     <>
       <header className="fixed inset-x-0 top-0 z-50 bg-black/80">
         <div aria-hidden className="absolute inset-x-0 top-[5px] h-px bg-foreground" />
+        <div aria-hidden className="absolute inset-x-0 bottom-[5px] h-px bg-foreground" />
         <div className="px-5 py-4 md:px-6 md:py-5">
           <nav className="flex items-center justify-between md:items-start">
             {/* Left menu (hidden — replaced by the overlay menu on all sizes) */}

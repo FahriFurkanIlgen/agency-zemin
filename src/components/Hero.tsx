@@ -30,11 +30,22 @@ export function Hero() {
     const onMeta = () => setDuration(v.duration);
     const onPlay = () => setPlaying(true);
     const onPause = () => setPlaying(false);
-    v.muted = true;
-    v.playsInline = true;
-    void v.play().catch(() => setPlaying(false));
+    const tryAutoplay = () => {
+      v.setAttribute("muted", "");
+      v.setAttribute("playsinline", "");
+      v.setAttribute("autoplay", "");
+      v.muted = true;
+      v.defaultMuted = true;
+      v.playsInline = true;
+      void v.play().catch(() => setPlaying(false));
+    };
+    const onVisibilityChange = () => {
+      if (!document.hidden) tryAutoplay();
+    };
+    tryAutoplay();
     // sync initial state in case events already fired (cached/fast load)
     const sync = requestAnimationFrame(() => {
+      tryAutoplay();
       if (Number.isFinite(v.duration)) setDuration(v.duration);
       setTime(v.currentTime);
       setPlaying(!v.paused);
@@ -44,6 +55,8 @@ export function Hero() {
     v.addEventListener("durationchange", onMeta);
     v.addEventListener("play", onPlay);
     v.addEventListener("pause", onPause);
+    v.addEventListener("canplay", tryAutoplay);
+    document.addEventListener("visibilitychange", onVisibilityChange);
     return () => {
       cancelAnimationFrame(sync);
       v.removeEventListener("timeupdate", onTime);
@@ -51,6 +64,8 @@ export function Hero() {
       v.removeEventListener("durationchange", onMeta);
       v.removeEventListener("play", onPlay);
       v.removeEventListener("pause", onPause);
+      v.removeEventListener("canplay", tryAutoplay);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 
@@ -139,6 +154,7 @@ export function Hero() {
         autoPlay
         loop
         muted
+        preload="auto"
         playsInline
       />
 
