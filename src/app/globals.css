@@ -232,6 +232,11 @@
   .cursor-dot.is-active {
     opacity: 0;
   }
+  /* Hide the small global cursor while the hero reel button is active */
+  html.reel-hover .cursor-ring,
+  html.reel-hover .cursor-dot {
+    opacity: 0;
+  }
   /* Hide the native cursor only on fine-pointer devices */
   html.has-custom-cursor,
   html.has-custom-cursor a,

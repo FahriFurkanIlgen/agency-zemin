@@ -157,14 +157,16 @@ export function Nav() {
         </nav>
       </div>
 
-      {/* Site-wide header statement strip */}
-      <p
-        className={`label-mono border-y border-foreground/20 px-5 py-1.5 text-[10px] uppercase leading-tight transition-opacity duration-300 md:px-6 md:text-[11px] md:!opacity-100 ${
-          hideChrome ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
-      >
-        {L(headerStatement, lang)}
-      </p>
+      {/* Site-wide header statement strip — hidden for now */}
+      {false && (
+        <p
+          className={`label-mono border-y border-foreground/20 px-5 py-1.5 text-[10px] uppercase leading-tight transition-opacity duration-300 md:px-6 md:text-[11px] md:!opacity-100 ${
+            hideChrome ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
+        >
+          {L(headerStatement, lang)}
+        </p>
+      )}
     </header>
 
       {/* Full-screen mobile overlay menu */}
