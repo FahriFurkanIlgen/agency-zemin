@@ -5,6 +5,7 @@ import { LanguageProvider } from "@/components/LanguageProvider";
 import { ContentProvider } from "@/components/ContentProvider";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Intro } from "@/components/Intro";
+import { CookieNotice } from "@/components/CookieNotice";
 import { getContent } from "@/lib/store";
 
 // GT Pressura (mono grotesque, all-caps display) → Spline Sans Mono
@@ -51,6 +52,7 @@ export default async function RootLayout({
             <Intro />
             <CustomCursor />
             {children}
+            <CookieNotice />
           </LanguageProvider>
         </ContentProvider>
       </body>

@@ -29,8 +29,12 @@ export function OpenCalls() {
         }
       >
         {openCalls.items.map((call) => (
-          <article
+          <Link
             key={call.id}
+            href={call.applyHref}
+            target={call.applyHref.startsWith("http") ? "_blank" : undefined}
+            rel={call.applyHref.startsWith("http") ? "noopener noreferrer" : undefined}
+            aria-label={`${L(call.title, lang)} - ${lang === "de" ? "Bewerben" : "Apply"}`}
             className={`group flex flex-col ${useSlider ? "w-[82vw] shrink-0 snap-start md:w-[calc((100vw-6rem)/3)]" : ""}`}
           >
             {call.imageUrl ? (
@@ -59,16 +63,11 @@ export function OpenCalls() {
             </p>
             <div className="mt-auto flex items-center justify-between border-t border-foreground/30 pt-3">
               <span className="label-mono text-[11px]">{L(call.deadline, lang)}</span>
-              <Link
-                href={call.applyHref}
-                target={call.applyHref.startsWith("http") ? "_blank" : undefined}
-                rel={call.applyHref.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="link-sweep label-mono text-[11px]"
-              >
+              <span className="link-sweep label-mono text-[11px]">
                 {lang === "de" ? "Bewerben ↗" : "Apply ↗"}
-              </Link>
+              </span>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </section>
