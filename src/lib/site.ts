@@ -32,13 +32,8 @@ export const BOOKING_CATEGORIES: { id: string; en: string; de: string }[] = [
   { id: "workshop", en: "Workshop", de: "Workshop" },
   {
     id: "private",
-    en: "Private Event (Birthday, party, etc.)",
-    de: "Private Veranstaltung (Geburtstag, Feier usw.)",
-  },
-  {
-    id: "corporate",
-    en: "Corporate Launch / Meeting",
-    de: "Firmen-Launch / Meeting",
+    en: "Private Event",
+    de: "Private Veranstaltung",
   },
   { id: "other", en: "Other", de: "Andere" },
 ];
@@ -49,7 +44,7 @@ export const DICT = {
     bravery: "An independent art space",
     scroll: "Scroll to view more ↓",
     based: "Kreuzberg\nBerlin",
-    newsletterTitle: "Stay in the loop",
+    newsletterTitle: "Newsletter",
     newsletterPlaceholder: "Your email",
     subscribe: "Subscribe",
     bookingIntro:

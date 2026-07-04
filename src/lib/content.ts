@@ -312,7 +312,7 @@ export const DEFAULT_CONTENT: SiteContent = {
   footer: {
     headingLines: {
       de: "Lass uns\netwas\nhier —\nzusammen\nmachen.",
-      en: "Let's make something together.",
+      en: "Let's make something - together.",
     },
   },
 };

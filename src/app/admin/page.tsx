@@ -17,6 +17,16 @@ type NewsletterSubscriber = {
   createdAt: string;
 };
 
+type BookingRequest = {
+  id: string;
+  name: string;
+  email: string;
+  date: string;
+  message: string;
+  categories: string[];
+  createdAt: string;
+};
+
 export default function AdminPage() {
   const [authed, setAuthed] = useState<boolean | null>(null);
   const [password, setPassword] = useState("");
@@ -24,6 +34,7 @@ export default function AdminPage() {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [status, setStatus] = useState<Status>({ kind: "idle" });
   const [subscribers, setSubscribers] = useState<NewsletterSubscriber[]>([]);
+  const [bookings, setBookings] = useState<BookingRequest[]>([]);
 
   // Check existing session + load content
   useEffect(() => {
@@ -35,15 +46,26 @@ export default function AdminPage() {
       const authenticated = Boolean(s.authenticated);
       setAuthed(authenticated);
       setContent(c);
-      if (authenticated) await loadNewsletterSubscribers();
+      if (authenticated) await loadAdminLists();
     })();
   }, []);
+
+  async function loadAdminLists() {
+    await Promise.all([loadNewsletterSubscribers(), loadBookings()]);
+  }
 
   async function loadNewsletterSubscribers() {
     const res = await fetch("/api/newsletter");
     if (!res.ok) return;
     const data = (await res.json()) as { subscribers?: NewsletterSubscriber[] };
     setSubscribers(data.subscribers || []);
+  }
+
+  async function loadBookings() {
+    const res = await fetch("/api/booking");
+    if (!res.ok) return;
+    const data = (await res.json()) as { bookings?: BookingRequest[] };
+    setBookings(data.bookings || []);
   }
 
   async function handleLogin(e: React.FormEvent) {
@@ -57,7 +79,7 @@ export default function AdminPage() {
     if (res.ok) {
       setAuthed(true);
       setPassword("");
-      await loadNewsletterSubscribers();
+      await loadAdminLists();
     } else {
       const data = await res.json().catch(() => ({}));
       setLoginError(data.error || "Login fehlgeschlagen");
@@ -542,6 +564,56 @@ export default function AdminPage() {
               })
             }
           />
+        </Section>
+
+        {/* Booking Requests */}
+        <Section title="BOOKING REQUESTS">
+          <div className="flex flex-col gap-3 border border-foreground/30 p-4">
+            <div className="flex items-center justify-between">
+              <span className="label-mono text-[11px] opacity-60">
+                {bookings.length} kayıt
+              </span>
+              <button
+                type="button"
+                onClick={loadBookings}
+                className="label-mono text-[11px] underline-offset-2 hover:underline"
+              >
+                Yenile ↗
+              </button>
+            </div>
+            {bookings.length === 0 ? (
+              <p className="label-mono text-[12px] opacity-60">
+                Henüz booking talebi yok.
+              </p>
+            ) : (
+              <ul className="flex flex-col divide-y divide-foreground/20">
+                {bookings.map((booking) => (
+                  <li key={booking.id} className="flex flex-col gap-3 py-4">
+                    <div className="grid gap-2 md:grid-cols-[1fr_auto] md:items-start">
+                      <div className="flex flex-col gap-1">
+                        <a
+                          href={`mailto:${booking.email}`}
+                          className="label-mono text-[13px] underline-offset-2 hover:underline"
+                        >
+                          {booking.name} · {booking.email}
+                        </a>
+                        <span className="label-mono text-[11px] opacity-60">
+                          {booking.categories.join(", ") || "Keine Kategorie"}
+                          {booking.date ? ` · ${booking.date}` : ""}
+                        </span>
+                      </div>
+                      <span className="label-mono text-[11px] opacity-60">
+                        {new Date(booking.createdAt).toLocaleString("de-DE")}
+                      </span>
+                    </div>
+                    <p className="label-mono whitespace-pre-wrap text-[12px] leading-relaxed">
+                      {booking.message}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </Section>
 
         {/* Newsletter */}
