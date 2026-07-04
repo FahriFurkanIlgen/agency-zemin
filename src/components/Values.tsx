@@ -15,7 +15,7 @@ export function Values() {
       className="relative overflow-hidden border-t border-foreground/15 px-5 py-24 md:px-6 md:py-40"
     >
       {/* Section label */}
-      <p className="label-mono mb-10 text-[11px] uppercase md:mb-16">
+      <p className="label-mono mb-10 text-[11px] md:mb-16">
         {L(values.label, lang)}
       </p>
 
@@ -51,7 +51,7 @@ export function Values() {
                 <h4 className="display-pressura text-[8vw] leading-[0.9] md:text-[clamp(1.5rem,2.6vw,2.5rem)]">
                   {L(item.title, lang)}
                 </h4>
-                <p className="label-mono max-w-[46ch] text-[12px] uppercase leading-relaxed opacity-90 md:text-[13px]">
+                <p className="label-mono max-w-[46ch] text-[12px] leading-relaxed opacity-90 md:text-[13px]">
                   {L(item.body, lang)}
                 </p>
               </div>

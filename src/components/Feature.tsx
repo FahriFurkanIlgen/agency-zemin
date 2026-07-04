@@ -223,14 +223,14 @@ export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: Featur
               <button
                 type="button"
                 onClick={togglePlay}
-                className="link-sweep uppercase"
+                className="link-sweep"
               >
                 {playLabel}
               </button>
               <button
                 type="button"
                 onClick={toggleMute}
-                className="link-sweep uppercase"
+                className="link-sweep"
               >
                 {soundLabel}
               </button>

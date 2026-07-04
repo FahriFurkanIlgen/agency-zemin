@@ -26,7 +26,7 @@ export default function DatenschutzPage() {
 
         <div className="grid max-w-3xl gap-10 text-[14px] leading-relaxed md:text-[15px]">
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">HAFTUNG FÜR INHALTE</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Haftung für Inhalte</h2>
             <p>
               Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene
               Inhalte auf diesen Seiten nach den allgemeinen Gesetzen
@@ -38,7 +38,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">HAFTUNG FÜR LINKS</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Haftung für Links</h2>
             <p>
               Unser Angebot enthält Links zu externen Websites Dritter, auf deren
               Inhalte wir keinen Einfluss haben. Deshalb können wir für diese
@@ -49,7 +49,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">URHEBERRECHT</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Urheberrecht</h2>
             <p>
               Die durch die Seitenbetreiber erstellten Inhalte und Werke auf
               diesen Seiten unterliegen dem deutschen Urheberrecht. Die
@@ -60,7 +60,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">DATENSCHUTZ</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Datenschutz</h2>
             <p>
               Die Nutzung unserer Website ist in der Regel ohne Angabe
               personenbezogener Daten möglich. Soweit auf unseren Seiten
@@ -78,7 +78,7 @@ export default function DatenschutzPage() {
 
           <section className="flex flex-col gap-2">
             <h2 className="label-mono mb-2 text-[12px]">
-              WIDERSPRUCH WERBE-MAILS
+              Widerspruch Werbe-Mails
             </h2>
             <p>
               Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten
@@ -88,7 +88,7 @@ export default function DatenschutzPage() {
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">VERANTWORTLICHE STELLE</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Verantwortliche Stelle</h2>
             <p>{SITE.address}</p>
             <p>
               <a href={`mailto:${SITE.email}`} className="underline">

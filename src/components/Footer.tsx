@@ -53,13 +53,13 @@ export function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t.newsletterPlaceholder}
-                className="label-mono w-full bg-transparent py-2 text-[14px] uppercase outline-none placeholder:text-foreground/40"
+                className="label-mono w-full bg-transparent py-2 text-[14px] outline-none placeholder:text-foreground/40"
               />
               <button
                 type="submit"
                 className="label-mono shrink-0 py-2 pl-4 text-[12px] transition-opacity hover:opacity-60"
               >
-                {submitted ? "✓ DONE" : `${t.subscribe} ↗`}
+                  {submitted ? "✓ Done" : `${t.subscribe} ↗`}
               </button>
             </form>
           </div>
@@ -85,7 +85,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="link-sweep"
               >
-                INSTAGRAM ↗
+                Instagram ↗
               </a>
               <a
                 href={contact.linktree}
@@ -93,7 +93,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="link-sweep"
               >
-                LINKTREE ↗
+                Linktree ↗
               </a>
             </div>
           </div>
@@ -108,7 +108,7 @@ export function Footer() {
       </div>
 
       <div className="label-mono flex items-end justify-between text-[11px]">
-        <span>{contact.address.toUpperCase()}</span>
+        <span>{contact.address}</span>
         <span className="flex items-center gap-4">
           <span>©2026 {SITE.name}</span>
           <Link href="/impressum" className="link-sweep">

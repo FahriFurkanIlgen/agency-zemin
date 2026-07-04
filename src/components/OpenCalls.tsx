@@ -65,7 +65,7 @@ export function OpenCalls() {
                 rel={call.applyHref.startsWith("http") ? "noopener noreferrer" : undefined}
                 className="link-sweep label-mono text-[11px]"
               >
-                {lang === "de" ? "BEWERBEN ↗" : "APPLY ↗"}
+                {lang === "de" ? "Bewerben ↗" : "Apply ↗"}
               </Link>
             </div>
           </article>

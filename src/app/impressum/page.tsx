@@ -28,14 +28,14 @@ export default function ImpressumPage() {
 
         <div className="grid max-w-3xl gap-10 text-[14px] leading-relaxed md:text-[15px]">
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">ANGABEN GEMÄSS § 5 TMG</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Angaben gemäß § 5 TMG</h2>
             <p>{RESPONSIBLE}</p>
             <p>{SITE.address}</p>
             <p>Deutschland</p>
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">KONTAKT</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Kontakt</h2>
             <p>
               Telefon:{" "}
               <a href={`tel:${SITE.phone.replace(/\s/g, "")}`} className="underline">
@@ -52,14 +52,14 @@ export default function ImpressumPage() {
 
           <section className="flex flex-col gap-2">
             <h2 className="label-mono mb-2 text-[12px]">
-              VERANTWORTLICH FÜR DEN INHALT NACH § 55 ABS. 2 RSTV
+              Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
             </h2>
             <p>{RESPONSIBLE}</p>
             <p>{SITE.address}</p>
           </section>
 
           <section className="flex flex-col gap-2">
-            <h2 className="label-mono mb-2 text-[12px]">STREITSCHLICHTUNG</h2>
+            <h2 className="label-mono mb-2 text-[12px]">Streitschlichtung</h2>
             <p>
               Die Europäische Kommission stellt eine Plattform zur
               Online-Streitbeilegung (OS) bereit:{" "}

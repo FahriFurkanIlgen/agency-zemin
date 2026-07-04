@@ -122,7 +122,7 @@ export function Nav() {
             className="group hidden"
             aria-label="Get in touch"
           >
-            <span className="label-mono whitespace-pre text-center text-[15px] font-medium uppercase leading-[1.05] [writing-mode:vertical-rl] rotate-180">
+            <span className="label-mono whitespace-pre text-center text-[15px] font-medium leading-[1.05] [writing-mode:vertical-rl] rotate-180">
               {t.getInTouch}
             </span>
             <span className="flex h-11 w-11 items-center justify-center rounded-full border border-foreground transition-colors group-hover:bg-foreground group-hover:text-background">
@@ -166,7 +166,7 @@ export function Nav() {
       {/* Site-wide header statement strip — hidden for now */}
       {false && (
         <p
-          className={`label-mono border-y border-foreground/20 px-5 py-1.5 text-[10px] uppercase leading-tight transition-opacity duration-300 md:px-6 md:text-[11px] md:!opacity-100 ${
+          className={`label-mono border-y border-foreground/20 px-5 py-1.5 text-[10px] leading-tight transition-opacity duration-300 md:px-6 md:text-[11px] md:!opacity-100 ${
             hideChrome ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
@@ -248,8 +248,8 @@ export function Nav() {
           </div>
 
           {/* Footer row */}
-          <div className="menu-chrome label-mono mt-3 flex shrink-0 items-center justify-between text-[10px] uppercase md:mt-4">
-            <span>BERLIN</span>
+          <div className="menu-chrome label-mono mt-3 flex shrink-0 items-center justify-between text-[10px] md:mt-4">
+            <span>Berlin</span>
             <span>©2026 ZEMIN</span>
             <Link href="/datenschutz" onClick={closeMenu}>
               {t.privacy}

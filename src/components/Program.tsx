@@ -36,10 +36,10 @@ export function Program() {
             <h4 className="display-pressura col-span-9 text-[5vw] leading-[0.95] md:col-span-6 md:text-[clamp(1.2rem,2.2vw,2rem)]">
               {L(event.title, lang)}
             </h4>
-            <span className="label-mono col-span-6 col-start-4 text-[11px] uppercase opacity-70 md:col-span-2 md:col-start-auto">
+            <span className="label-mono col-span-6 col-start-4 text-[11px] opacity-70 md:col-span-2 md:col-start-auto">
               {L(event.category, lang)}
             </span>
-            <span className="label-mono col-span-6 col-start-10 text-right text-[11px] uppercase md:col-span-2">
+            <span className="label-mono col-span-6 col-start-10 text-right text-[11px] md:col-span-2">
               {L(event.status, lang)} ↗
             </span>
           </div>

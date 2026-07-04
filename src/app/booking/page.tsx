@@ -38,12 +38,12 @@ export default function BookingPage() {
           {lang === "de" ? "BUCHUNG" : "BOOKING"}
         </h1>
 
-        <p className="label-mono mb-14 max-w-2xl text-[13px] uppercase leading-relaxed md:text-[15px]">
+        <p className="label-mono mb-14 max-w-2xl text-[13px] leading-relaxed md:text-[15px]">
           {t.bookingIntro}
         </p>
 
         {submitted ? (
-          <div className="label-mono border border-foreground/30 p-8 text-[14px] uppercase">
+          <div className="label-mono border border-foreground/30 p-8 text-[14px]">
             {lang === "de"
               ? "Danke! Wir haben deine Anfrage erhalten und melden uns in Kürze."
               : "Thank you! We received your request and will be in touch shortly."}
@@ -53,7 +53,7 @@ export default function BookingPage() {
             {/* Categories */}
             <fieldset className="flex flex-col gap-4">
               <legend className="label-mono mb-4 text-[12px]">
-                {lang === "de" ? "KATEGORIE WÄHLEN" : "SELECT CATEGORY"}
+                {lang === "de" ? "Kategorie wählen" : "Select category"}
               </legend>
               {BOOKING_CATEGORIES.map((cat) => {
                 const active = selected.includes(cat.id);
@@ -64,7 +64,7 @@ export default function BookingPage() {
                     onClick={() => toggleCategory(cat.id)}
                     aria-pressed={active}
                     className={
-                      "label-mono flex items-center justify-between border border-foreground/30 px-4 py-3 text-left text-[12px] uppercase transition-colors " +
+                      "label-mono flex items-center justify-between border border-foreground/30 px-4 py-3 text-left text-[12px] transition-colors " +
                       (active
                         ? "bg-foreground text-background"
                         : "hover:bg-foreground/5")
@@ -81,51 +81,51 @@ export default function BookingPage() {
             <div className="flex flex-col gap-5">
               <label className="flex flex-col gap-2">
                 <span className="label-mono text-[12px]">
-                  {lang === "de" ? "NAME" : "NAME"}
+                  {lang === "de" ? "Name" : "Name"}
                 </span>
                 <input
                   type="text"
                   required
-                  className="label-mono border-b border-foreground/30 bg-transparent py-2 text-[14px] uppercase outline-none focus:border-foreground"
+                  className="label-mono border-b border-foreground/30 bg-transparent py-2 text-[14px] outline-none focus:border-foreground"
                 />
               </label>
               <label className="flex flex-col gap-2">
-                <span className="label-mono text-[12px]">E-MAIL</span>
+                <span className="label-mono text-[12px]">E-Mail</span>
                 <input
                   type="email"
                   required
-                  className="label-mono border-b border-foreground/30 bg-transparent py-2 text-[14px] uppercase outline-none focus:border-foreground"
+                  className="label-mono border-b border-foreground/30 bg-transparent py-2 text-[14px] outline-none focus:border-foreground"
                 />
               </label>
               <label className="flex flex-col gap-2">
                 <span className="label-mono text-[12px]">
-                  {lang === "de" ? "WUNSCHDATUM" : "PREFERRED DATE"}
+                  {lang === "de" ? "Wunschdatum" : "Preferred date"}
                 </span>
                 <input
                   type="date"
-                  className="label-mono border-b border-foreground/30 bg-transparent py-2 text-[14px] uppercase outline-none focus:border-foreground"
+                  className="label-mono border-b border-foreground/30 bg-transparent py-2 text-[14px] outline-none focus:border-foreground"
                 />
               </label>
               <label className="flex flex-col gap-2">
                 <span className="label-mono text-[12px]">
-                  {lang === "de" ? "DEINE NACHRICHT" : "YOUR MESSAGE"}
+                  {lang === "de" ? "Deine Nachricht" : "Your message"}
                 </span>
                 <textarea
                   rows={4}
                   required
-                  className="label-mono resize-none border border-foreground/30 bg-transparent p-3 text-[14px] uppercase outline-none focus:border-foreground"
+                  className="label-mono resize-none border border-foreground/30 bg-transparent p-3 text-[14px] outline-none focus:border-foreground"
                 />
               </label>
 
               <button
                 type="submit"
-                className="label-mono mt-2 border border-foreground bg-foreground px-6 py-4 text-[13px] uppercase text-background transition-opacity hover:opacity-80"
+                className="label-mono mt-2 border border-foreground bg-foreground px-6 py-4 text-[13px] text-background transition-opacity hover:opacity-80"
               >
-                {lang === "de" ? "ANFRAGE SENDEN ↗" : "SEND REQUEST ↗"}
+                {lang === "de" ? "Anfrage senden ↗" : "Send request ↗"}
               </button>
 
-              <p className="label-mono text-[11px] uppercase opacity-60">
-                {lang === "de" ? "ODER SCHREIB UNS: " : "OR EMAIL US: "}
+              <p className="label-mono text-[11px] opacity-60">
+                {lang === "de" ? "Oder schreib uns: " : "Or email us: "}
                 <a href={`mailto:${SITE.email}`} className="underline">
                   {SITE.email}
                 </a>

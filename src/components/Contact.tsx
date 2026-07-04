@@ -34,17 +34,17 @@ export function Contact() {
         {/* Details */}
         <div className="label-mono flex flex-col gap-6 self-center text-[14px] normal-case md:text-[16px]">
           <div>
-            <p className="mb-1 opacity-60">{lang === "de" ? "ADRESSE" : "ADDRESS"}</p>
+            <p className="mb-1 opacity-60">{lang === "de" ? "Adresse" : "Address"}</p>
             <p>{contact.address}</p>
           </div>
           <div>
-            <p className="mb-1 opacity-60">{lang === "de" ? "E-MAIL" : "EMAIL"}</p>
+            <p className="mb-1 opacity-60">{lang === "de" ? "E-Mail" : "Email"}</p>
             <a href={`mailto:${contact.email}`} className="link-sweep">
               {contact.email}
             </a>
           </div>
           <div>
-            <p className="mb-1 opacity-60">{lang === "de" ? "TELEFON" : "PHONE"}</p>
+            <p className="mb-1 opacity-60">{lang === "de" ? "Telefon" : "Phone"}</p>
             <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="link-sweep">
               {contact.phone}
             </a>
@@ -55,7 +55,7 @@ export function Contact() {
             rel="noopener noreferrer"
             className="mt-2 inline-block w-fit border-b border-foreground/30 pb-1 transition-opacity hover:opacity-60"
           >
-            {lang === "de" ? "IN GOOGLE MAPS ÖFFNEN ↗" : "OPEN IN GOOGLE MAPS ↗"}
+            {lang === "de" ? "In Google Maps öffnen ↗" : "Open in Google Maps ↗"}
           </a>
         </div>
       </div>

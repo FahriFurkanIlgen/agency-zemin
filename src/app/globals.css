@@ -152,10 +152,9 @@
 }
 
 @layer utilities {
-  /* Mono uppercase label used across the site */
+  /* Mono label used across the site */
   .label-mono {
     font-family: var(--font-pressura);
-    text-transform: uppercase;
     letter-spacing: 0.01em;
     line-height: 1.05;
   }

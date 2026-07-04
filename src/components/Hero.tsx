@@ -228,14 +228,14 @@ export function Hero() {
               <button
                 type="button"
                 onClick={togglePlay}
-                className="link-sweep uppercase"
+                className="link-sweep"
               >
                 {playLabel}
               </button>
               <button
                 type="button"
                 onClick={toggleMute}
-                className="link-sweep uppercase"
+                className="link-sweep"
               >
                 {soundLabel}
               </button>
