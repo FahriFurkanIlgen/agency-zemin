@@ -272,6 +272,60 @@
   html.menu-open body {
     overflow: hidden;
   }
+  .menu-overlay {
+    transform-origin: calc(100% - 1.75rem) 1.75rem;
+    will-change: transform, opacity, border-radius;
+    animation: menu-app-open 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .menu-chrome,
+  .menu-wordmark,
+  .menu-links li {
+    animation: menu-item-in 0.65s cubic-bezier(0.19, 1, 0.22, 1) both;
+  }
+  .menu-links li:nth-child(1) {
+    animation-delay: 0.08s;
+  }
+  .menu-links li:nth-child(2) {
+    animation-delay: 0.13s;
+  }
+  .menu-links li:nth-child(3) {
+    animation-delay: 0.18s;
+  }
+  .menu-links li:nth-child(4) {
+    animation-delay: 0.23s;
+  }
+  .menu-chrome {
+    animation-delay: 0.18s;
+  }
+  .menu-wordmark {
+    animation-delay: 0.28s;
+  }
+  @keyframes menu-app-open {
+    0% {
+      opacity: 0;
+      border-radius: 9999px;
+      transform: translate3d(0, 0, 0) scale(0.035);
+    }
+    45% {
+      opacity: 1;
+      border-radius: 36px;
+    }
+    100% {
+      opacity: 1;
+      border-radius: 0;
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+  }
+  @keyframes menu-item-in {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .intro {
     position: fixed;
     inset: 0;

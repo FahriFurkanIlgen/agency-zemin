@@ -169,9 +169,9 @@ export function Nav() {
 
       {/* Full-screen overlay menu (all sizes) */}
       {menuOpen && (
-        <div className="fixed inset-0 z-[60] flex min-h-0 flex-col overflow-hidden bg-foreground px-5 py-4 text-background md:px-6 md:py-5">
+        <div className="menu-overlay fixed inset-0 z-[60] flex min-h-0 flex-col overflow-hidden bg-foreground px-5 py-4 text-background md:px-6 md:py-5">
           {/* Top row: logo + close */}
-          <div className="flex items-center justify-between">
+          <div className="menu-chrome flex items-center justify-between">
             <Link
               href="/"
               onClick={() => setMenuOpen(false)}
@@ -199,7 +199,7 @@ export function Nav() {
 
           {/* Links */}
           <nav className="mt-6 flex min-h-0 flex-1 flex-col justify-center md:mt-10">
-            <ul className="display-pressura flex flex-col gap-0.5 uppercase md:gap-1">
+            <ul className="menu-links display-pressura flex flex-col gap-0.5 uppercase md:gap-1">
               {NAV_LINKS.map((link) => (
                 <li key={link.id}>
                   <Link
@@ -215,7 +215,7 @@ export function Nav() {
 
             {/* Language toggle */}
             <div
-              className="label-mono mt-5 flex items-center gap-2 text-[13px] md:mt-8"
+              className="menu-chrome label-mono mt-5 flex items-center gap-2 text-[13px] md:mt-8"
               role="group"
               aria-label="Language"
             >
@@ -242,13 +242,13 @@ export function Nav() {
           {/* Oversized wordmark */}
           <div
             aria-hidden
-            className="display-pressura -mb-1 shrink-0 select-none text-[clamp(60px,20vw,120px)] font-semibold leading-[0.78] tracking-tight md:-mb-2 md:text-[clamp(110px,15vw,220px)]"
+            className="menu-wordmark display-pressura -mb-1 shrink-0 select-none text-[clamp(60px,20vw,120px)] font-semibold leading-[0.78] tracking-tight md:-mb-2 md:text-[clamp(110px,15vw,220px)]"
           >
             ZEMIN BERLIN<sup className="text-[0.35em] align-super">®</sup>
           </div>
 
           {/* Footer row */}
-          <div className="label-mono mt-3 flex shrink-0 items-center justify-between text-[10px] uppercase md:mt-4">
+          <div className="menu-chrome label-mono mt-3 flex shrink-0 items-center justify-between text-[10px] uppercase md:mt-4">
             <span>BERLIN</span>
             <span>©2026 ZEMIN</span>
             <Link href="/datenschutz" onClick={() => setMenuOpen(false)}>
