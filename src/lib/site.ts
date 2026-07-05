@@ -3,6 +3,8 @@ export type Lang = "en" | "de";
 export const SITE = {
   name: "ZEMIN",
   city: "BERLIN",
+  title: "ZEMIN BERLIN — Art Space",
+  url: "https://www.zeminberlin.de",
   est: "(2025)",
   address: "Urbanstr. 3, 10961 Berlin",
   email: "info@zeminberlin.de",

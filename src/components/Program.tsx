@@ -26,6 +26,7 @@ export function Program() {
       <div className="flex flex-col">
         {program.events.map((event) => (
           <div
+            id={`event-${event.id}`}
             key={event.id}
             className="group grid grid-cols-12 items-center gap-3 border-t border-foreground/30 py-6 md:py-8"
           >
