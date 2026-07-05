@@ -46,9 +46,9 @@ function titleToDescription(title: string) {
 }
 
 function imageForTitle(title: string) {
-  if (/organize your event/i.test(title)) return "/images/organize.png?v=2";
-  if (/a\|v\s*chemy/i.test(title)) return "/images/av.png?v=1";
-  if (/analog\s*flux/i.test(title)) return "/images/analog.png?v=2";
+  if (/organize your event/i.test(title)) return "/images/organize.png?v=3";
+  if (/a\|v\s*chemy/i.test(title)) return "/images/av.png?v=2";
+  if (/analog\s*flux/i.test(title)) return "/images/analog.png?v=3";
   return DEFAULT_OPEN_CALL_IMAGE;
 }
 

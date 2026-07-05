@@ -217,7 +217,7 @@ export const DEFAULT_CONTENT: SiteContent = {
         applyHref:
           "https://docs.google.com/forms/d/e/1FAIpQLSfqi_AGBy1Pjq3axn2oMbO9cY4ZmNcbUIu7RoGMNdV1wDLtWA/viewform?usp=header",
         gradient: "linear-gradient(135deg, #2a6f5a, #0e3b32)",
-        imageUrl: "/images/organize.png?v=2",
+        imageUrl: "/images/organize.png?v=3",
       },
       {
         id: "c2",
@@ -232,7 +232,7 @@ export const DEFAULT_CONTENT: SiteContent = {
         applyHref:
           "https://docs.google.com/forms/d/e/1FAIpQLSfo1EpMzaRZ2YMBGSMrY9n_HTcn21m3khUcuy_3LzKxC-AFfA/viewform?usp=header",
         gradient: "linear-gradient(135deg, #c2603f, #5e2516)",
-        imageUrl: "/images/av.png?v=1",
+        imageUrl: "/images/av.png?v=2",
       },
       {
         id: "c3",
@@ -247,7 +247,7 @@ export const DEFAULT_CONTENT: SiteContent = {
         applyHref:
           "https://docs.google.com/forms/d/e/1FAIpQLSdI0C4PFWsVN967dZDSveRkAd9FeUDitHoufgrIFgZHl2y32Q/viewform?usp=publish-editor",
         gradient: "linear-gradient(135deg, #6a4ea0, #2b1d4f)",
-        imageUrl: "/images/analog.png?v=2",
+        imageUrl: "/images/analog.png?v=3",
       },
     ],
   },
