@@ -13,7 +13,7 @@ export function ContentProvider({
   children: ReactNode;
 }) {
   useEffect(() => {
-    const foreground = content.theme?.foreground || "#ff1a00";
+    const foreground = content.theme?.foreground || "#00ff0c";
     const root = document.documentElement;
     root.style.setProperty("--foreground", foreground);
     root.style.setProperty("--valiente-red", foreground);

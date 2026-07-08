@@ -202,7 +202,7 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@graph": [organizationStructuredData, ...eventStructuredData(content.program.events)],
   };
-  const foreground = content.theme?.foreground || "#ff1a00";
+  const foreground = content.theme?.foreground || "#00ff0c";
 
   return (
     <html

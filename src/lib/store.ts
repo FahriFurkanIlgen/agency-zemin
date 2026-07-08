@@ -68,6 +68,11 @@ export async function saveContent(content: SiteContent): Promise<void> {
   if (usePostgres) {
     await writePostgres(content);
   } else {
+    if (process.env.VERCEL) {
+      throw new Error(
+        "Content storage is not configured. Set POSTGRES_URL in Vercel to save admin changes.",
+      );
+    }
     await writeFile(content);
   }
 }

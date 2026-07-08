@@ -26,6 +26,12 @@ export async function PUT(request: Request) {
     return NextResponse.json({ error: "Invalid content" }, { status: 400 });
   }
 
-  await saveContent(content);
-  return NextResponse.json({ ok: true });
+  try {
+    await saveContent(content);
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Content could not be saved";
+    console.error("Failed to save content", error);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
 }

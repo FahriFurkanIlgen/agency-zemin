@@ -51,27 +51,27 @@
 }
 
 :root {
-  /* Valiente palette: warm light grey bg, bright red foreground */
+  /* ZEMIN palette: black background, electric green foreground */
   --background: #000000;
-  --foreground: #ff1a00;
-  --valiente-red: #ff1a00;
+  --foreground: #00ff0c;
+  --valiente-red: #00ff0c;
   --valiente-grey: #dddbd6;
   --card: #dddbd6;
-  --card-foreground: #ff1a00;
+  --card-foreground: #00ff0c;
   --popover: #dddbd6;
-  --popover-foreground: #ff1a00;
-  --primary: #ff1a00;
+  --popover-foreground: #00ff0c;
+  --primary: #00ff0c;
   --primary-foreground: #dddbd6;
   --secondary: #d2d0ca;
-  --secondary-foreground: #ff1a00;
+  --secondary-foreground: #00ff0c;
   --muted: #d2d0ca;
-  --muted-foreground: #ff1a00;
-  --accent: #ff1a00;
+  --muted-foreground: #00ff0c;
+  --accent: #00ff0c;
   --accent-foreground: #dddbd6;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: rgba(255, 26, 0, 0.25);
-  --input: rgba(255, 26, 0, 0.25);
-  --ring: #ff1a00;
+  --border: rgba(0, 255, 12, 0.25);
+  --input: rgba(0, 255, 12, 0.25);
+  --ring: #00ff0c;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
