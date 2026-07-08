@@ -54,6 +54,7 @@ export async function getContent(): Promise<SiteContent> {
     const content = {
       ...DEFAULT_CONTENT,
       ...stored,
+      theme: { ...DEFAULT_CONTENT.theme, ...stored.theme },
       contact: { ...DEFAULT_CONTENT.contact, ...stored.contact },
       openCalls: { ...DEFAULT_CONTENT.openCalls, ...stored.openCalls },
     };

@@ -182,6 +182,20 @@ export default function AdminPage() {
       </div>
 
       <div className="flex flex-col gap-14">
+        {/* Theme */}
+        <Section title="THEME">
+          <ColorField
+            label="Text- und Akzentfarbe"
+            value={content.theme.foreground}
+            onChange={(foreground) =>
+              setContent({
+                ...content,
+                theme: { ...content.theme, foreground },
+              })
+            }
+          />
+        </Section>
+
         {/* Header statement */}
         <Section title="HEADER STATEMENT">
           <LocalizedField
@@ -800,6 +814,41 @@ function PlainField({
   onChange: (v: string) => void;
 }) {
   return <Field label={label} value={value} onChange={onChange} />;
+}
+
+function ColorField({
+  label,
+  value,
+  onChange,
+}: {
+  label: string;
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <label className="flex flex-col gap-2">
+      <span className="label-mono text-[10px] opacity-50">{label}</span>
+      <div className="grid gap-3 md:grid-cols-[4rem_1fr] md:items-center">
+        <input
+          type="color"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="h-12 w-16 border border-foreground/30 bg-transparent p-1"
+          aria-label={label}
+        />
+        <input
+          type="text"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="label-mono border-b border-foreground/30 bg-transparent py-1.5 text-[13px] normal-case outline-none focus:border-foreground"
+          placeholder="#ff1a00"
+        />
+      </div>
+      <span className="label-mono text-[10px] opacity-50">
+        Wird für rote Texte, Linien, Buttons und Akzente verwendet.
+      </span>
+    </label>
+  );
 }
 
 function EventEditor({

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import { Spline_Sans_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "@/components/LanguageProvider";
@@ -175,6 +176,22 @@ function eventStructuredData(events: SiteContent["program"]["events"]) {
   }));
 }
 
+function themeStyle(foreground: string): CSSProperties {
+  return {
+    "--foreground": foreground,
+    "--valiente-red": foreground,
+    "--card-foreground": foreground,
+    "--popover-foreground": foreground,
+    "--primary": foreground,
+    "--secondary-foreground": foreground,
+    "--muted-foreground": foreground,
+    "--accent": foreground,
+    "--ring": foreground,
+    "--border": `color-mix(in oklab, ${foreground} 25%, transparent)`,
+    "--input": `color-mix(in oklab, ${foreground} 25%, transparent)`,
+  } as CSSProperties;
+}
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -185,13 +202,17 @@ export default async function RootLayout({
     "@context": "https://schema.org",
     "@graph": [organizationStructuredData, ...eventStructuredData(content.program.events)],
   };
+  const foreground = content.theme?.foreground || "#ff1a00";
 
   return (
     <html
       lang="en"
       className={`${splineMono.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body
+        className="min-h-full flex flex-col bg-background text-foreground"
+        style={themeStyle(foreground)}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}

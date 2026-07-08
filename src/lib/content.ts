@@ -33,6 +33,9 @@ export type ValueItem = {
 };
 
 export type SiteContent = {
+  theme: {
+    foreground: string;
+  };
   headerStatement: Localized;
   hero: {
     intro: Localized;
@@ -91,6 +94,9 @@ export function lines(value: Localized, lang: Lang): string[] {
 }
 
 export const DEFAULT_CONTENT: SiteContent = {
+  theme: {
+    foreground: "#ff1a00",
+  },
   headerStatement: {
     de: "Zemin Art Space: Ein unabhängiger Produktionsort in Kreuzberg, der interdisziplinäre künstlerische Praktiken beherbergt und unterstützt.",
     en: "Zemin Art Space: An independent production site in Kreuzberg, dedicated to hosting and supporting interdisciplinary artistic practices.",

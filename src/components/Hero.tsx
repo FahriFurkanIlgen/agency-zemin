@@ -173,7 +173,7 @@ export function Hero() {
       <div
         ref={ringRef}
         aria-hidden
-        className="pointer-events-none absolute left-0 top-0 z-20 hidden h-28 w-28 items-center justify-center rounded-full border-[1.5px] border-[#ff1a00] text-[#ff1a00] opacity-0 mix-blend-difference will-change-transform md:flex"
+        className="pointer-events-none absolute left-0 top-0 z-20 hidden h-28 w-28 items-center justify-center rounded-full border-[1.5px] border-foreground text-foreground opacity-0 mix-blend-difference will-change-transform md:flex"
         style={{
           transition:
             "transform 0.5s cubic-bezier(0.19,1,0.22,1), opacity 0.3s ease",
