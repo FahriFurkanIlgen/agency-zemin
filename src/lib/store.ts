@@ -2,7 +2,6 @@ import "server-only";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { DEFAULT_CONTENT, type SiteContent } from "./content";
-import { withLinktreeOpenCalls } from "./linktree";
 
 const FILE_PATH = path.join(process.cwd(), "data", "content.json");
 const usePostgres = Boolean(process.env.POSTGRES_URL);
@@ -58,7 +57,7 @@ export async function getContent(): Promise<SiteContent> {
       contact: { ...DEFAULT_CONTENT.contact, ...stored.contact },
       openCalls: { ...DEFAULT_CONTENT.openCalls, ...stored.openCalls },
     };
-    return withLinktreeOpenCalls(content);
+    return content;
   } catch {
     return DEFAULT_CONTENT;
   }

@@ -108,6 +108,18 @@ export default function AdminPage() {
     }
   }
 
+  async function handleRevalidate() {
+    setStatus({ kind: "saving", msg: "CACHE WIRD ERNEUERT…" });
+    const res = await fetch("/api/revalidate", { method: "POST" });
+    if (res.ok) {
+      setStatus({ kind: "ok", msg: "Cache erneuert ✓" });
+      setTimeout(() => setStatus({ kind: "idle" }), 2500);
+    } else {
+      const data = await res.json().catch(() => ({}));
+      setStatus({ kind: "error", msg: data.error || "Cache konnte nicht erneuert werden" });
+    }
+  }
+
   if (authed === null) {
     return (
       <main className="flex min-h-screen items-center justify-center px-5">
@@ -664,15 +676,25 @@ export default function AdminPage() {
         <span className="label-mono text-[11px]">
           {status.kind === "ok" && status.msg}
           {status.kind === "error" && status.msg}
-          {status.kind === "saving" && "SPEICHERT…"}
+          {status.kind === "saving" && (status.msg || "SPEICHERT…")}
         </span>
-        <button
-          onClick={handleSave}
-          disabled={status.kind === "saving"}
-          className="label-mono border border-foreground bg-foreground px-8 py-3 text-[13px] text-background transition-opacity hover:opacity-80 disabled:opacity-50"
-        >
-          ÄNDERUNGEN SPEICHERN ↗
-        </button>
+        <div className="flex items-center gap-3">
+          <button
+            onClick={handleRevalidate}
+            disabled={status.kind === "saving"}
+            title="Erneuert den Seiten-Cache, ohne Inhalte zu ändern"
+            className="label-mono border border-foreground/40 px-5 py-3 text-[13px] transition-opacity hover:opacity-80 disabled:opacity-50"
+          >
+            CACHE ERNEUERN ↻
+          </button>
+          <button
+            onClick={handleSave}
+            disabled={status.kind === "saving"}
+            className="label-mono border border-foreground bg-foreground px-8 py-3 text-[13px] text-background transition-opacity hover:opacity-80 disabled:opacity-50"
+          >
+            ÄNDERUNGEN SPEICHERN ↗
+          </button>
+        </div>
       </div>
     </main>
   );

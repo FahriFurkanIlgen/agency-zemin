@@ -25,7 +25,10 @@ const spaceGrotesk = Space_Grotesk({
   weight: ["400", "500"],
 });
 
-export const dynamic = "force-dynamic";
+// Pages are prerendered and served from the edge instead of hitting the origin on
+// every view. Saving from /admin calls revalidatePath("/", "layout"), so edits show
+// up immediately; this interval is only a safety net if content changes elsewhere.
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),

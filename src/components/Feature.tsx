@@ -16,9 +16,14 @@ function formatTime(seconds: number) {
 type FeatureProps = {
   id?: string;
   src?: string;
+  poster?: string;
 };
 
-export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: FeatureProps) {
+export function Feature({
+  id = "feature",
+  src = "/videos/feedback.mp4",
+  poster,
+}: FeatureProps) {
   const { lang } = useLanguage();
   const { feature } = useContent();
 
@@ -27,10 +32,15 @@ export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: Featur
   const [muted, setMuted] = useState(true);
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  // The video source is only attached once the section nears the viewport.
+  const [active, setActive] = useState(false);
+
+  const posterSrc =
+    poster ?? src.replace("/videos/", "/images/posters/").replace(/\.mp4$/, ".jpg");
 
   useEffect(() => {
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !active) return;
     const onTime = () => setTime(v.currentTime);
     const onMeta = () => setDuration(v.duration);
     const onPlay = () => setPlaying(true);
@@ -72,7 +82,7 @@ export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: Featur
       v.removeEventListener("canplay", tryAutoplay);
       document.removeEventListener("visibilitychange", onVisibilityChange);
     };
-  }, []);
+  }, [active]);
 
   const togglePlay = () => {
     const v = videoRef.current;
@@ -93,6 +103,30 @@ export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: Featur
   const ringRef = useRef<HTMLDivElement>(null);
   const posRef = useRef({ x: 0, y: 0 });
   const pressedRef = useRef(false);
+
+  // Eagerly loading every <video> cost ~28 MB per visit, split into hundreds of
+  // Range requests — the bulk of our Vercel Edge Requests. Attach the source only
+  // when the section is close to the viewport, and stop streaming once it leaves.
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const v = videoRef.current;
+        if (entry.isIntersecting) {
+          setActive(true);
+          if (v) void v.play().catch(() => {});
+          return;
+        }
+        v?.pause();
+      },
+      { rootMargin: "300px" },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
 
   const applyRing = () => {
     const ring = ringRef.current;
@@ -155,11 +189,12 @@ export function Feature({ id = "feature", src = "/videos/feedback.mp4" }: Featur
       <video
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
-        src={src}
+        src={active ? src : undefined}
+        poster={posterSrc}
         autoPlay
         loop
         muted
-        preload="auto"
+        preload="none"
         playsInline
       />
 
