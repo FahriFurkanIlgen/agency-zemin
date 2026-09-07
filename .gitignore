@@ -9,9 +9,6 @@ out/
 build/
 dist/
 
-# Local backups
-backups/*.tar.gz
-
 # Local content store (edited via /admin; seeded from DEFAULT_CONTENT)
 /data/content.json
 /data/newsletter.json
@@ -58,4 +55,3 @@ next-env.d.ts
 
 # Local temp files
 temp/
-.env*
