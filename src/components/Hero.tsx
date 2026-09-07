@@ -151,6 +151,7 @@ export function Hero() {
         ref={videoRef}
         className="absolute inset-0 h-full w-full object-cover"
         src="/videos/homepage.mp4"
+        poster="/images/posters/homepage.jpg"
         autoPlay
         loop
         muted

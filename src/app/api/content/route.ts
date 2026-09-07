@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { getContent, saveContent } from "@/lib/store";
 import { isAuthenticated } from "@/lib/auth";
 import type { SiteContent } from "@/lib/content";
@@ -28,7 +29,10 @@ export async function PUT(request: Request) {
 
   try {
     await saveContent(content);
-    return NextResponse.json({ ok: true });
+    // The site is prerendered, so drop the cached pages or the edit stays invisible.
+    // "layout" covers the root layout plus every page nested under it.
+    revalidatePath("/", "layout");
+    return NextResponse.json({ ok: true, revalidated: true });
   } catch (error) {
     const message = error instanceof Error ? error.message : "Content could not be saved";
     console.error("Failed to save content", error);
