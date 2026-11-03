@@ -2,6 +2,7 @@ import { promises as fs } from "node:fs";
 import path from "node:path";
 import { NextResponse } from "next/server";
 import { isAuthenticated } from "@/lib/auth";
+import { sendBookingNotification } from "@/lib/booking-mail";
 
 export const dynamic = "force-dynamic";
 
@@ -162,8 +163,16 @@ export async function POST(request: Request) {
   try {
     if (usePostgres) await saveToPostgres(booking);
     else await saveToFile(booking);
-    return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "Booking request failed" }, { status: 500 });
   }
+
+  // The booking is already stored, so a mail failure must not fail the request.
+  try {
+    await sendBookingNotification(booking);
+  } catch (error) {
+    console.error("Booking notification failed", error);
+  }
+
+  return NextResponse.json({ ok: true });
 }
